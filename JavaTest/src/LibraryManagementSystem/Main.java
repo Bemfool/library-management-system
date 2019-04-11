@@ -1,6 +1,5 @@
 package LibraryManagementSystem;
 
-import StockTradingSystem.controller.ClientUIController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,9 +23,9 @@ public class Main extends Application {
 
     private Initializable replaceSceneContent(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        InputStream in = StockTradingSystem.Main.class.getResourceAsStream(fxml);
+        InputStream in = LibraryManagementSystem.Main.class.getResourceAsStream(fxml);
         loader.setBuilderFactory(new JavaFXBuilderFactory());
-        loader.setLocation(StockTradingSystem.Main.class.getResource(fxml));
+        loader.setLocation(LibraryManagementSystem.Main.class.getResource(fxml));
         AnchorPane page;
         try {
             page = loader.load(in);

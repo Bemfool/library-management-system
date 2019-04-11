@@ -1,6 +1,6 @@
 package LibraryManagementSystem.controller;
 
-import StockTradingSystem.Main;
+import LibraryManagementSystem.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,7 +28,7 @@ public class LoginUIController implements Initializable {
                 // TODO
             } else {
                 // 进入管理员账户的首页
-                application.gotoAdminUI();
+                //application.gotoAdminUI();
             }
         }
 

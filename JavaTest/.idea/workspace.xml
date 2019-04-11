@@ -30,35 +30,36 @@
           <entry key="project.open.time.36" value="1" />
           <entry key="project.open.time.44" value="1" />
           <entry key="project.open.time.45" value="1" />
-          <entry key="project.opened" value="13" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="fxml" value="4" />
+          <entry key="fxml" value="8" />
           <entry key="iml" value="1" />
-          <entry key="java" value="11" />
+          <entry key="java" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="11" />
-          <entry key="XML" value="4" />
+          <entry key="JAVA" value="15" />
+          <entry key="XML" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="11" />
-          <entry key="fxml" value="327" />
-          <entry key="java" value="4937" />
+          <entry key="fxml" value="349" />
+          <entry key="java" value="5017" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="4937" />
+          <entry key="JAVA" value="5017" />
           <entry key="PLAIN_TEXT" value="11" />
-          <entry key="XML" value="327" />
+          <entry key="XML" value="349" />
         </counts>
       </usages-collector>
     </session>
@@ -67,20 +68,21 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/fxml/LoginUI.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
+            <state relative-caret-position="300">
+              <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
             </state>
           </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="51" selection-start-line="51" selection-end-line="55" selection-end-column="5" />
+            <state relative-caret-position="401">
+              <caret line="63" selection-start-line="63" selection-end-line="78" selection-end-column="5" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="method#createChangePasswordUI#0;class#Main#0" />
                 <element signature="method#gotoAdminUI#0;class#Main#0" />
                 <element signature="method#replaceSceneContent#0;class#Main#0" />
@@ -91,21 +93,22 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/fxml/ChangePasswordUI.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="912">
+            <state relative-caret-position="433">
               <caret line="48" column="64" selection-start-line="48" selection-start-column="64" selection-end-line="48" selection-end-column="64" />
             </state>
           </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/controller/ChangePasswordUIController.java">
+        <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="21" column="39" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
+            <state relative-caret-position="211">
+              <caret line="20" column="52" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#replaceSceneContent#0;class#Main#0" />
               </folding>
             </state>
           </provider>
@@ -114,40 +117,30 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/controller/LoginUIController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/fxml/AdminUI.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="190">
-              <caret line="10" column="84" selection-start-line="10" selection-start-column="84" selection-end-line="10" selection-end-column="184" />
+              <caret line="20" column="57" lean-forward="true" selection-end-line="63" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/fxml/ClientUI.fxml">
+        <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/ui/LoginUI.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="47" column="50" lean-forward="true" selection-start-line="47" selection-start-column="50" selection-end-line="47" selection-end-column="50" />
+            </state>
+          </provider>
           <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="22" column="61" selection-start-line="22" selection-start-column="59" selection-end-line="22" selection-end-column="61" />
-            </state>
-          </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/controller/ClientUIController.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/controller/LoginUIController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
+            <state relative-caret-position="173">
+              <caret line="15" column="29" lean-forward="true" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -156,13 +149,20 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/controller/AdminUIControlller.java">
+        <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/ui/UserUI.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-2413">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/controller/UserUIController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="38">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -221,8 +221,14 @@
         <option value="$PROJECT_DIR$/src/StockTradingSystem/fxml/ClientUI.fxml" />
         <option value="$PROJECT_DIR$/src/StockTradingSystem/controller/ClientUIController.java" />
         <option value="$PROJECT_DIR$/src/StockTradingSystem/fxml/ChangePasswordUI.fxml" />
-        <option value="$PROJECT_DIR$/src/StockTradingSystem/Main.java" />
         <option value="$PROJECT_DIR$/src/StockTradingSystem/controller/ChangePasswordUIController.java" />
+        <option value="$PROJECT_DIR$/src/StockTradingSystem/Main.java" />
+        <option value="$PROJECT_DIR$/src/LibraryManagementSystem/UserUIController.java" />
+        <option value="$PROJECT_DIR$/src/LibraryManagementSystem/UserUI.fxml" />
+        <option value="$PROJECT_DIR$/src/LibraryManagementSystem/Main.java" />
+        <option value="$PROJECT_DIR$/src/LibraryManagementSystem/LoginUI.fxml" />
+        <option value="$PROJECT_DIR$/src/LibraryManagementSystem/LoginUIController.java" />
+        <option value="$PROJECT_DIR$/src/LibraryManagementSystem/controller/LoginUIController.java" />
       </list>
     </option>
   </component>
@@ -234,7 +240,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="435" />
-    <option name="y" value="67" />
+    <option name="y" value="65" />
     <option name="width" value="980" />
     <option name="height" value="1040" />
   </component>
@@ -244,7 +250,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -252,30 +257,78 @@
               <item name="JavaFXTest" type="b2602c69:ProjectViewProjectNode" />
               <item name="JavaTest" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="JavaFXTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JavaTest" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JavaFXTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JavaTest" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="LibraryManagementSystem" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JavaFXTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JavaTest" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="LibraryManagementSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JavaFXTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JavaTest" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="LibraryManagementSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JavaFXTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JavaTest" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="StockTradingSystem" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JavaFXTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JavaTest" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="StockTradingSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JavaFXTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JavaTest" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="StockTradingSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="fxml" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553592130636" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554994935726" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\JavaTest\src\LibraryManagementSystem\ui" />
+      <recent name="D:\JavaTest\src\StockTradingSystem\fxml" />
+      <recent name="D:\JavaTest\src\JavaFXSample\fxml" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="LibraryManagementSystem.controller" />
       <recent name="JavaFXSample.controller" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\JavaTest\src\StockTradingSystem\fxml" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\JavaTest\src\StockTradingSystem\fxml" />
-      <recent name="D:\JavaTest\src\JavaFXSample\fxml" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -296,7 +349,7 @@
       <module name="JavaTest" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="StockTradingSystem.controller.*" />
+          <option name="PATTERN" value="StockTradingSystem.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -309,7 +362,7 @@
       <module name="JavaTest" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="StockTradingSystem.controller.*" />
+          <option name="PATTERN" value="StockTradingSystem.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -322,7 +375,7 @@
       <module name="JavaTest" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="StockTradingSystem.controller.*" />
+          <option name="PATTERN" value="StockTradingSystem.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -335,7 +388,7 @@
       <module name="JavaTest" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="StockTradingSystem.controller.*" />
+          <option name="PATTERN" value="StockTradingSystem.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -381,16 +434,18 @@
       <workItem from="1553561399839" duration="5040000" />
       <workItem from="1554985969586" duration="781000" />
       <workItem from="1554992218373" duration="577000" />
+      <workItem from="1554992979328" duration="1383000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41676000" />
+    <option name="totallyTimeSpent" value="43059000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27021563" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27493262" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -399,7 +454,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32894737" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.22660819" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22660819" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -452,22 +507,6 @@
     <entry file="file://$PROJECT_DIR$/src/JavaFXSample/HelloJavaFX.java" />
     <entry file="file://$PROJECT_DIR$/src/JavaFXSample/MultipleStage.java" />
     <entry file="file://$PROJECT_DIR$/src/JavaFXSample/UserInput.java" />
-    <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/fxml/LoginUI.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/fxml/ChangePasswordUI.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="912">
-          <caret line="48" column="64" selection-start-line="48" selection-start-column="64" selection-end-line="48" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/controller/ChangePasswordUIController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
@@ -478,31 +517,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/controller/LoginUIController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/fxml/AdminUI.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="10" column="84" selection-start-line="10" selection-start-column="84" selection-end-line="10" selection-end-column="184" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/fxml/ClientUI.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="22" column="61" selection-start-line="22" selection-start-column="59" selection-end-line="22" selection-end-column="61" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/controller/ClientUIController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -533,12 +562,83 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="51" selection-start-line="51" selection-end-line="55" selection-end-column="5" />
+        <state relative-caret-position="401">
+          <caret line="63" selection-start-line="63" selection-end-line="78" selection-end-column="5" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#createChangePasswordUI#0;class#Main#0" />
             <element signature="method#gotoAdminUI#0;class#Main#0" />
             <element signature="method#replaceSceneContent#0;class#Main#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/ui/UserUI.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2413">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="20" column="52" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#replaceSceneContent#0;class#Main#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/controller/UserUIController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/fxml/LoginUI.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/ui/LoginUI.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="47" column="50" lean-forward="true" selection-start-line="47" selection-start-column="50" selection-end-line="47" selection-end-column="50" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/fxml/ChangePasswordUI.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="48" column="64" selection-start-line="48" selection-start-column="64" selection-end-line="48" selection-end-column="64" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/controller/LoginUIController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="20" column="57" lean-forward="true" selection-end-line="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/controller/LoginUIController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="15" column="29" lean-forward="true" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

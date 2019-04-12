@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ef6e9395-7927-44c4-8f9e-d17a7f114684" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaTest/LibraryManagementSystem/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaTest/LibraryManagementSystem/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaTest/LibraryManagementSystem/controller/LoginUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaTest/LibraryManagementSystem/controller/LoginUIController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaTest/LibraryManagementSystem/controller/UserUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaTest/LibraryManagementSystem/controller/UserUIController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaTest/LibraryManagementSystem/ui/LoginUI.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaTest/LibraryManagementSystem/ui/UserUI.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LibraryManagementSystem/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LibraryManagementSystem/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LibraryManagementSystem/controller/LoginUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LibraryManagementSystem/controller/LoginUIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LibraryManagementSystem/controller/UserUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LibraryManagementSystem/controller/UserUIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LibraryManagementSystem/ui/LoginUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/LibraryManagementSystem/fxml/LoginUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LibraryManagementSystem/ui/UserUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/LibraryManagementSystem/fxml/UserUI.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="ef6e9395-7927-44c4-8f9e-d17a7f114684" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -172,8 +160,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/fxml/AdminUI.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="10" column="138" selection-start-line="10" selection-start-column="138" selection-end-line="10" selection-end-column="138" />
+            <state relative-caret-position="-2470">
+              <caret line="17" column="35" lean-forward="true" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
             </state>
           </provider>
           <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -257,7 +245,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="951" />
     <option name="width" value="978" />
     <option name="height" value="1039" />
@@ -313,7 +301,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555044480024" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555044855521" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -441,7 +429,7 @@
       <workItem from="1554992218373" duration="577000" />
       <workItem from="1554992979328" duration="1383000" />
       <workItem from="1554995016958" duration="1864000" />
-      <workItem from="1555043256883" duration="673000" />
+      <workItem from="1555043256883" duration="1061000" />
     </task>
     <task id="LOCAL-00001" summary="little update">
       <created>1554995290378</created>
@@ -454,10 +442,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45596000" />
+    <option name="totallyTimeSpent" value="45984000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24932614" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -596,8 +585,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/fxml/AdminUI.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="138" selection-start-line="10" selection-start-column="138" selection-end-line="10" selection-end-column="138" />
+        <state relative-caret-position="-2470">
+          <caret line="17" column="35" lean-forward="true" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />

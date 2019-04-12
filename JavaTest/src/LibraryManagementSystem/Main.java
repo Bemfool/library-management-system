@@ -17,6 +17,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Main extends Application {
+    public static int id;
     public static Connection conn;
     public Stage stage;
     public Stage floatStage;

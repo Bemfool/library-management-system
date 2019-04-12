@@ -38,9 +38,10 @@ public class LoginUIController implements Initializable {
             pStmt.setInt(1, Integer.parseInt(userField.getText()));
             rset = pStmt.executeQuery();
             if(rset.next())
-                if(md5Password.equals(rset.getString("password")))
+                if(md5Password.equals(rset.getString("password"))) {
+                    Main.id = Integer.parseInt(userField.getText());
                     application.gotoUserUI();
-                else
+                } else
                     // TODO 完善输错密码时候的反馈
                     System.out.println("Wrong password");
             else
@@ -52,9 +53,10 @@ public class LoginUIController implements Initializable {
             pStmt.setInt(1, Integer.parseInt(userField.getText()));
             rset = pStmt.executeQuery();
             if(rset.next())
-                if(md5Password.equals(rset.getString("password")))
+                if(md5Password.equals(rset.getString("password"))) {
+                    Main.id = Integer.parseInt(userField.getText());
                     application.gotoAdminUI();
-                else
+                } else
                     System.out.println("Wrong password" + md5Password + " " + rset.getString("password"));
             else
                 System.out.println("Wrong user id");
@@ -72,7 +74,6 @@ public class LoginUIController implements Initializable {
         // TODO
         System.out.println("forget password.");
     }
-
 
     public void setApp(Main app) {
         this.application = app;

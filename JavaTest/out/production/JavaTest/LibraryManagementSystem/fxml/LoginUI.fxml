@@ -41,7 +41,7 @@
 
                 <Label text="密码:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
 
-                <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                <PasswordField fx:id="passwordField" onKeyPressed="#enterKey" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
 
                 <HBox spacing="10" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
                     <children>

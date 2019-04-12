@@ -8,6 +8,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 import java.math.BigInteger;
 import java.net.URL;
@@ -83,4 +85,8 @@ public class LoginUIController implements Initializable {
     public void initialize(URL url, ResourceBundle rb){
     }
 
+    public void enterKey(KeyEvent keyEvent) throws Exception {
+        if(keyEvent.getCode() == KeyCode.ENTER)
+            loginButton(null);
+    }
 }

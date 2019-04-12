@@ -60,12 +60,12 @@
                                       <Insets left="10.0" top="10.0" />
                                   </HBox.margin>
                               </ChoiceBox>
-                              <TextField prefHeight="29.0" prefWidth="359.0">
+                              <TextField fx:id="searchField" onKeyPressed="#enterKey" prefHeight="29.0" prefWidth="359.0">
                                   <HBox.margin>
                                       <Insets left="10.0" top="10.0" />
                                   </HBox.margin>
                               </TextField>
-                              <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="77.0" text="查询">
+                              <Button mnemonicParsing="false" onAction="#search" prefHeight="29.0" prefWidth="77.0" text="查询">
                                   <HBox.margin>
                                       <Insets left="10.0" top="10.0" />
                                   </HBox.margin>
@@ -91,7 +91,7 @@
             </AnchorPane>
                 <AnchorPane VBox.vgrow="ALWAYS">
                     <children>
-                        <TabPane prefHeight="525.0" prefWidth="900.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TabPane fx:id="tabPane" prefHeight="525.0" prefWidth="900.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <tabs>
                                 <Tab closable="false" text="个人信息">
                                     <content>
@@ -125,15 +125,15 @@
                                             <children>
                                                 <VBox layoutX="25.0" layoutY="25.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                                                     <children>
-                                                        <TableView layoutX="14.0" layoutY="14.0" prefHeight="414.0" prefWidth="832.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
+                                                        <TableView fx:id="rentTableField" layoutX="14.0" layoutY="14.0" prefHeight="414.0" prefWidth="832.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
                                                             <columns>
-                                                                <TableColumn prefWidth="75.0" text="选择" />
-                                                                <TableColumn prefWidth="120.0" text="书名" />
-                                                                <TableColumn prefWidth="113.0" text="作者" />
-                                                                <TableColumn prefWidth="157.0" text="出版社" />
-                                                                <TableColumn prefWidth="111.0" text="出版年份" />
-                                                                <TableColumn prefWidth="95.0" text="借阅日期" />
-                                                                <TableColumn prefWidth="149.0" text="应还日期" />
+                                                                <TableColumn fx:id="choiceCol" prefWidth="75.0" text="选择" />
+                                                                <TableColumn fx:id="rentNameCol" prefWidth="120.0" text="书名" />
+                                                                <TableColumn fx:id="rentAuthorCol" prefWidth="113.0" text="作者" />
+                                                                <TableColumn fx:id="rentPressCol" prefWidth="157.0" text="出版社" />
+                                                                <TableColumn fx:id="rentPubYearCol" prefWidth="111.0" text="出版年份" />
+                                                                <TableColumn fx:id="rentDateCol" prefWidth="95.0" text="借阅日期" />
+                                                                <TableColumn fx:id="dueDateCol" prefWidth="149.0" text="应还日期" />
                                                             </columns>
                                                         </TableView>
                                                         <HBox alignment="TOP_RIGHT" prefHeight="57.0" prefWidth="832.0">
@@ -156,16 +156,18 @@
                                         </AnchorPane>
                                     </content>
                                 </Tab>
-                        <Tab text="图书查找">
+                        <Tab fx:id="searchTab" text="图书查找">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <TableView layoutX="20.0" layoutY="18.0" prefHeight="255.0" prefWidth="821.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="18.0">
+                                    <TableView fx:id="searchTableField" layoutX="20.0" layoutY="18.0" prefHeight="255.0" prefWidth="821.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="18.0">
                                        <columns>
-                                          <TableColumn prefWidth="140.0" text="书名" />
-                                          <TableColumn prefWidth="222.0" text="作者" />
-                                          <TableColumn prefWidth="263.0" text="出版社" />
-                                          <TableColumn prefWidth="195.0" text="出版年份" />
+                                          <TableColumn fx:id="searchNameCol" prefWidth="140.0" text="书名" />
+                                          <TableColumn fx:id="searchAuthorCol" prefWidth="132.0" text="作者" />
+                                          <TableColumn fx:id="searchPressCol" prefWidth="146.0" text="出版社" />
+                                          <TableColumn fx:id="searchPubYearCol" prefWidth="135.0" text="出版年份" />
+                                          <TableColumn fx:id="indexCol" prefWidth="124.0" text="索书号" />
+                                          <TableColumn fx:id="numCol" prefWidth="130.0" text="在馆数量" />
                                        </columns>
                                     </TableView>
                                  </children>

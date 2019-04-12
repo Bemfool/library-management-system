@@ -1,5 +1,6 @@
 package LibraryManagementSystem;
 
+import LibraryManagementSystem.controller.AdminUIController;
 import LibraryManagementSystem.controller.LoginUIController;
 import LibraryManagementSystem.controller.UserUIController;
 import javafx.application.Application;
@@ -11,8 +12,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Main extends Application {
+    public static Connection conn;
     public Stage stage;
     public Stage floatStage;
 
@@ -36,6 +41,12 @@ public class Main extends Application {
         userUI.setApp(this);
     }
 
+    public void gotoAdminUI() throws Exception {
+        stage.setResizable(true);
+        AdminUIController adminUI = (AdminUIController)replaceSceneContent("fxml/AdminUI.fxml");
+        adminUI.setApp(this);
+    }
+
 
     private Initializable replaceSceneContent(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader();
@@ -54,7 +65,12 @@ public class Main extends Application {
         return (Initializable) loader.getController();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        conn = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/Library?serverTimezone=GMT&&useSSL=false",
+                "root", "lyz5621617");
+
         launch(args);
     }
 }

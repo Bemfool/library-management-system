@@ -9,7 +9,7 @@ import javafx.scene.control.ChoiceBox;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class UserUIController  implements Initializable {
+public class AdminUIController implements Initializable {
     private Main application;
     @FXML private ChoiceBox searchOption;
 

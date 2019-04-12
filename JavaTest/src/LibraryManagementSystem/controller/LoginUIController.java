@@ -23,12 +23,12 @@ public class LoginUIController implements Initializable {
         // TODO
         RadioButton selectedBtn = (RadioButton)privCheck.getSelectedToggle();
         if(isAuthorized(userField.getText(), passwordField.getText(), selectedBtn.getText())) {
-            if(selectedBtn.getText().equals("证券账户")) {
+            if(selectedBtn.getText().equals("普通用户")) {
                 // 进入证券账户的首页
                 // TODO
             } else {
                 // 进入管理员账户的首页
-                //application.gotoAdminUI();
+                application.gotoUserUI();
             }
         }
 

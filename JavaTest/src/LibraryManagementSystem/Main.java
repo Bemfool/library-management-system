@@ -1,5 +1,7 @@
 package LibraryManagementSystem;
 
+import LibraryManagementSystem.controller.LoginUIController;
+import LibraryManagementSystem.controller.UserUIController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,8 +20,22 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
         stage.setTitle("Library Management System");
+        gotoLoginUI();
         stage.show();
     }
+
+    public void gotoLoginUI() throws Exception {
+        stage.setResizable(false);
+        LoginUIController loginUI = (LoginUIController)replaceSceneContent("fxml/LoginUI.fxml");
+        loginUI.setApp(this);
+    }
+
+    public void gotoUserUI() throws Exception {
+        stage.setResizable(true);
+        UserUIController userUI = (UserUIController)replaceSceneContent("fxml/UserUI.fxml");
+        userUI.setApp(this);
+    }
+
 
     private Initializable replaceSceneContent(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader();

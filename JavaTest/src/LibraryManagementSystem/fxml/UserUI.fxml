@@ -10,9 +10,9 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LibraryManagementSystem.controller.UserUIController">
     <children>
-        <VBox prefHeight="600.0" prefWidth="900.0">
+        <VBox prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <MenuBar VBox.vgrow="NEVER">
+                <MenuBar VBox.vgrow="ALWAYS">
                     <menus>
                         <Menu mnemonicParsing="false" text="个人">
                             <items>
@@ -51,41 +51,45 @@
                         </Menu>
                     </menus>
                 </MenuBar>
-                <HBox prefHeight="57.0" prefWidth="900.0">
-                    <children>
-                        <ChoiceBox prefHeight="29.0" prefWidth="98.0">
-                            <HBox.margin>
-                                <Insets left="10.0" top="10.0" />
-                            </HBox.margin>
-                        </ChoiceBox>
-                        <TextField prefHeight="29.0" prefWidth="359.0">
-                            <HBox.margin>
-                                <Insets left="10.0" top="10.0" />
-                            </HBox.margin>
-                        </TextField>
-                        <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="77.0" text="查询">
-                            <HBox.margin>
-                                <Insets left="10.0" top="10.0" />
-                            </HBox.margin>
-                        </Button>
-                        <AnchorPane prefHeight="50.0" prefWidth="358.0" HBox.hgrow="ALWAYS">
-                            <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="欢迎您，马冬梅" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
-                                    <HBox.margin>
-                                        <Insets bottom="10.0" right="10.0" />
-                                    </HBox.margin>
-                                    <font>
-                                        <Font name="Arial" size="22.0" />
-                                    </font>
-                                </Text>
-                            </children>
-                            <HBox.margin>
-                                <Insets left="10.0" />
-                            </HBox.margin>
-                        </AnchorPane>
-                    </children>
-                </HBox>
-                <AnchorPane>
+            <AnchorPane>
+               <children>
+                      <HBox prefHeight="57.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS">
+                          <children>
+                              <ChoiceBox fx:id="searchOption" prefHeight="21.0" prefWidth="81.0">
+                                  <HBox.margin>
+                                      <Insets left="10.0" top="10.0" />
+                                  </HBox.margin>
+                              </ChoiceBox>
+                              <TextField prefHeight="29.0" prefWidth="359.0">
+                                  <HBox.margin>
+                                      <Insets left="10.0" top="10.0" />
+                                  </HBox.margin>
+                              </TextField>
+                              <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="77.0" text="查询">
+                                  <HBox.margin>
+                                      <Insets left="10.0" top="10.0" />
+                                  </HBox.margin>
+                              </Button>
+                              <AnchorPane maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="358.0" HBox.hgrow="ALWAYS">
+                                  <children>
+                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="欢迎您，马冬梅" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
+                                          <HBox.margin>
+                                              <Insets bottom="10.0" right="10.0" />
+                                          </HBox.margin>
+                                          <font>
+                                              <Font name="Arial" size="22.0" />
+                                          </font>
+                                      </Text>
+                                  </children>
+                                  <HBox.margin>
+                                      <Insets left="10.0" />
+                                  </HBox.margin>
+                              </AnchorPane>
+                          </children>
+                      </HBox>
+               </children>
+            </AnchorPane>
+                <AnchorPane VBox.vgrow="ALWAYS">
                     <children>
                         <TabPane prefHeight="525.0" prefWidth="900.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <tabs>
@@ -152,6 +156,22 @@
                                         </AnchorPane>
                                     </content>
                                 </Tab>
+                        <Tab text="图书查找">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView layoutX="20.0" layoutY="18.0" prefHeight="255.0" prefWidth="821.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="18.0">
+                                       <columns>
+                                          <TableColumn prefWidth="140.0" text="书名" />
+                                          <TableColumn prefWidth="222.0" text="作者" />
+                                          <TableColumn prefWidth="263.0" text="出版社" />
+                                          <TableColumn prefWidth="195.0" text="出版年份" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
                             </tabs>
                         </TabPane>
                     </children>
@@ -160,4 +180,3 @@
         </VBox>
     </children>
 </AnchorPane>
-

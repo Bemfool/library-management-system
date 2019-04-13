@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef6e9395-7927-44c4-8f9e-d17a7f114684" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Keith_Lin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Keith_Lin.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JavaTest/LibraryManagementSystem/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaTest/LibraryManagementSystem/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JavaTest/LibraryManagementSystem/controller/AdminUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaTest/LibraryManagementSystem/controller/AdminUIController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LibraryManagementSystem/ControllerUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LibraryManagementSystem/controller/ControllerUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LibraryManagementSystem/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LibraryManagementSystem/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LibraryManagementSystem/controller/AdminUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LibraryManagementSystem/controller/AdminUIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LibraryManagementSystem/controller/LoginUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LibraryManagementSystem/controller/LoginUIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LibraryManagementSystem/controller/UserUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LibraryManagementSystem/controller/UserUIController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -103,13 +96,13 @@
         <counts>
           <entry key="fxml" value="5" />
           <entry key="java" value="10382" />
-          <entry key="txt" value="102" />
+          <entry key="txt" value="115" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="10377" />
-          <entry key="PLAIN_TEXT" value="102" />
+          <entry key="PLAIN_TEXT" value="115" />
           <entry key="SQL" value="5" />
           <entry key="XML" value="5" />
         </counts>
@@ -200,8 +193,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/controller/LoginUIController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="67" column="17" selection-start-line="67" selection-start-column="17" selection-end-line="67" selection-end-column="17" />
+            <state relative-caret-position="342">
+              <caret line="71" column="16" lean-forward="true" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3795#3796#0" expanded="true" />
@@ -372,7 +365,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555164429559" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555168661036" />
     <property name="extract.method.default.visibility" value="public" />
     <property name="last_opened_file_path" value="C:/Program Files (x86)/MySQL/Connector J 8.0/mysql-connector-java-8.0.11.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -506,7 +499,7 @@
       <workItem from="1554995016958" duration="1864000" />
       <workItem from="1555043256883" duration="27677000" />
       <workItem from="1555120739760" duration="7333000" />
-      <workItem from="1555141031659" duration="3047000" />
+      <workItem from="1555141031659" duration="4484000" />
     </task>
     <task id="LOCAL-00001" summary="little update">
       <created>1554995290378</created>
@@ -557,17 +550,24 @@
       <option name="project" value="LOCAL" />
       <updated>1555127584460</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="增加alertbox">
+      <created>1555164471751</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1555164471751</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82980000" />
+    <option name="totallyTimeSpent" value="84417000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24932614" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24932614" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -576,7 +576,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32456142" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32748538" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32748538" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -611,7 +611,8 @@
     <MESSAGE value="图书类" />
     <MESSAGE value="修改了基本的管理员操作" />
     <MESSAGE value="增加充满bug的借还操作" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加充满bug的借还操作" />
+    <MESSAGE value="增加alertbox" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加alertbox" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/javafx.base/com/sun/javafx/event/CompositeEventHandler.java">
@@ -747,8 +748,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/controller/LoginUIController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="67" column="17" selection-start-line="67" selection-start-column="17" selection-end-line="67" selection-end-column="17" />
+        <state relative-caret-position="342">
+          <caret line="71" column="16" lean-forward="true" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3795#3796#0" expanded="true" />

@@ -72,14 +72,23 @@
                               </Button>
                               <AnchorPane maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="358.0" HBox.hgrow="ALWAYS">
                                   <children>
-                                      <Text fx:id="welcome" strokeType="OUTSIDE" strokeWidth="0.0" text="欢迎您，马冬梅" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
-                                          <HBox.margin>
-                                              <Insets bottom="10.0" right="10.0" />
-                                          </HBox.margin>
-                                          <font>
-                                              <Font name="Arial" size="22.0" />
-                                          </font>
-                                      </Text>
+                              <HBox alignment="TOP_RIGHT" layoutX="69.0" layoutY="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Button fx:id="registerButton" layoutX="69.0" layoutY="10.0" mnemonicParsing="false" onAction="#register" text="新用户注册">
+                                       <HBox.margin>
+                                          <Insets right="30.0" top="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                            <Text fx:id="welcome" strokeType="OUTSIDE" strokeWidth="0.0" text="欢迎您，马冬梅" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0" HBox.hgrow="ALWAYS">
+                                                <HBox.margin>
+                                                    <Insets bottom="10.0" right="10.0" top="10.0" />
+                                                </HBox.margin>
+                                                <font>
+                                                    <Font name="Arial" size="22.0" />
+                                                </font>
+                                            </Text>
+                                 </children>
+                              </HBox>
                                   </children>
                                   <HBox.margin>
                                       <Insets left="10.0" />

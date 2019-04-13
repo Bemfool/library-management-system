@@ -181,4 +181,8 @@ public class AdminUIController implements Initializable {
         }
         enterReturnId(null);
     }
+
+    public void register(ActionEvent actionEvent) {
+        application.displayRegisterUI();
+    }
 }

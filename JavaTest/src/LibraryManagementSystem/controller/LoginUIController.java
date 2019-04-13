@@ -14,8 +14,11 @@ import javafx.scene.input.KeyEvent;
 import java.math.BigInteger;
 import java.net.URL;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class LoginUIController implements Initializable {
@@ -24,7 +27,7 @@ public class LoginUIController implements Initializable {
     @FXML private PasswordField passwordField;
     @FXML private TextField userField;
 
-    public void loginButton(ActionEvent actionEvent) throws Exception {
+    public void loginButton(ActionEvent actionEvent){
         // 选择的按钮，`普通用户`或`管理员`
         RadioButton selectedBtn = (RadioButton)privCheck.getSelectedToggle();
 
@@ -36,74 +39,130 @@ public class LoginUIController implements Initializable {
         }
 
         // 通过长度进行判断账户名是否输入错误
-        if(userField.getText().length() != 10 && selectedBtn.getText().equals("普通用户")) {
-            ControllerUtils.showAlert("[错误] 用户账户名长度不对!");
-            System.out.println("ERROR::USER_ID::LENGTH");
-            return;
-        } else if(userField.getText().length() != 5 && selectedBtn.getText().equals("管理员")) {
-            ControllerUtils.showAlert("[错误] 管理员账户名长度不对!");
-            System.out.println("ERROR::MANAGER_ID::LENGTH");
-            return;
+        if(!userField.getText().equals("root")) {
+            if(userField.getText().length() != 10 && selectedBtn.getText().equals("普通用户")) {
+                ControllerUtils.showAlert("[错误] 用户账户名长度不对!");
+                System.out.println("ERROR::USER_ID::LENGTH");
+                return;
+            } else if(userField.getText().length() != 5 && selectedBtn.getText().equals("管理员")) {
+                ControllerUtils.showAlert("[错误] 管理员账户名长度不对!");
+                System.out.println("ERROR::MANAGER_ID::LENGTH");
+                return;
+            }
         }
 
-        // 对输入的密码进行MD5加密
-        MessageDigest md5 = MessageDigest.getInstance("MD5");
-        md5.update(passwordField.getText().getBytes(), 0, passwordField.getText().length());
-        String md5Password = new BigInteger(1, md5.digest()).toString(16);
+        // 尝试连接数据库
+        try {
+            Main.conn = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/Library" +
+                            "?serverTimezone=GMT" +
+                            "&useSSL=false" +
+                            "&allowMultiQueries=true" +
+                            "&allowPublicKeyRetrieval=true",
+                    userField.getText(), passwordField.getText());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            ControllerUtils.showAlert("[错误] 账号或密码错误!");
+            System.out.println("ERROR::CONNECTION::FAILED");
+        }
 
         PreparedStatement pStmt;
         ResultSet rset;
         if(selectedBtn.getText().equals("普通用户")) {
+            // root账户直接进入用户界面
+            if(userField.getText().equals("root")) {
+                try {
+                    ControllerUtils.showAlert("[警告] 正在使用root模式登陆!");
+                    System.out.println("WARMING::ROOT");
+                    application.gotoUserUI();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ControllerUtils.showAlert("[错误] 无法跳转到用户主界面!");
+                    System.out.println("ERROR::GOTO_USER_UI::FAILED");
+                }
+                return;
+            }
             // 判断密码正确性，正确则跳转普通用户界面
-            pStmt = Main.conn.prepareStatement("SELECT password FROM user_account WHERE user_id = ?");
-            pStmt.setInt(1, Integer.parseInt(userField.getText()));
-            rset = pStmt.executeQuery();
-            if(rset.next())
-                if(md5Password.equals(rset.getString("password"))) {
+            try {
+                pStmt = Main.conn.prepareStatement("SELECT * FROM user_account WHERE user_id = ?");
+                pStmt.setInt(1, Integer.parseInt(userField.getText()));
+                rset = pStmt.executeQuery();
+                if(rset.next()) {
                     Main.id = Integer.parseInt(userField.getText());
                     application.gotoUserUI();
                 } else {
-
-                    System.out.println("ERROR::PASSWORD::WRONG");
+                    ControllerUtils.showAlert("[错误] 该用户不存在!");
+                    System.out.println("ERROR::USER_ID::NOT_FOUND");
                 }
-            else
-                // TODO 完善输错账号时候的反馈
-                System.out.println("Wrong user id");
+            } catch (SQLException e) {
+                e.printStackTrace();
+                ControllerUtils.showAlert("[错误] 数据库指令错误!");
+                System.out.println("ERROR::USER_ID::SELECT::FAILED");
+            } catch (Exception e) {
+                e.printStackTrace();
+                ControllerUtils.showAlert("[错误] 无法跳转到用户主界面!");
+                System.out.println("ERROR::GOTO_USER_UI::FAILED");
+            }
         } else {
-            // 跳转管理员界面
-            pStmt = Main.conn.prepareStatement("SELECT password FROM manager_account WHERE manager_id = ?");
-            pStmt.setInt(1, Integer.parseInt(userField.getText()));
-            rset = pStmt.executeQuery();
-            if(rset.next())
-                if(md5Password.equals(rset.getString("password"))) {
+            // root账户直接进入管理员界面
+            if(userField.getText().equals("root")) {
+                try {
+                    ControllerUtils.showAlert("[警告] 正在使用root模式登陆!");
+                    System.out.println("WARMING::ROOT");
+                    application.gotoAdminUI();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ControllerUtils.showAlert("[错误] 无法跳转到管理员主界面!");
+                    System.out.println("ERROR::GOTO_MANAGER_UI::FAILED");
+                }
+                return;
+            }
+            // 判断密码正确性，正确则跳转管理员界面
+            try {
+                pStmt = Main.conn.prepareStatement("SELECT * FROM manager_account WHERE manager_id = ?");
+                pStmt.setInt(1, Integer.parseInt(userField.getText()));
+                rset = pStmt.executeQuery();
+                if(rset.next()) {
                     Main.id = Integer.parseInt(userField.getText());
                     application.gotoAdminUI();
-                } else
-                    System.out.println("Wrong password" + md5Password + " " + rset.getString("password"));
-            else
-                System.out.println("Wrong user id");
+                } else {
+                    ControllerUtils.showAlert("[错误] 该管理员不存在!");
+                    System.out.println("ERROR::MANAGER_ID::NOT_FOUND");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                ControllerUtils.showAlert("[错误] 数据库指令错误!");
+                System.out.println("ERROR::MANAGER_ID::SELECT::FAILED");
+            } catch (Exception e) {
+                e.printStackTrace();
+                ControllerUtils.showAlert("[错误] 无法跳转到管理员主界面!");
+                System.out.println("ERROR::GOTO_ADMIN_UI::FAILED");
+            }
         }
 
     }
     public void register(ActionEvent mouseEvent) {
         // 进入注册账户界面
         // TODO
-        System.out.println("register");
+//        RadioButton selectedBtn = (RadioButton)privCheck.getSelectedToggle();
+//        PreparedStatement pStmt = Main.conn.prepareStatement("CREATE USER ?@'%' IDENTIFIED BY ?");
+//
+//        if(selectedBtn.getText().equals("普通用户")) {
+//
+//        }
+
     }
 
     public void forgetPassword(ActionEvent mouseEvent) {
         // 进入找回密码界面
         // TODO
-        System.out.println("forget password.");
+        System.out.println("HINT::FORGET_PASSWORD");
     }
 
-    public void setApp(Main app) {
-        this.application = app;
-    }
+    public void setApp(Main app) { this.application = app; }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb){
-    }
+    public void initialize(URL url, ResourceBundle rb){ }
 
     public void enterKey(KeyEvent keyEvent) throws Exception {
         if(keyEvent.getCode() == KeyCode.ENTER)

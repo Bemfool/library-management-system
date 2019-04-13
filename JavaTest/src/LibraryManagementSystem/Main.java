@@ -1,8 +1,6 @@
 package LibraryManagementSystem;
 
-import LibraryManagementSystem.controller.AdminUIController;
-import LibraryManagementSystem.controller.LoginUIController;
-import LibraryManagementSystem.controller.UserUIController;
+import LibraryManagementSystem.controller.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,54 +9,136 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class Main extends Application {
-    public static int id;
-    public static Connection conn;
+    public static int id;               /* 用户/管理员账号 */
+    public static Connection conn;      /* 用于数据库连接  */
     public Stage stage;
-    public Stage floatStage;
+    public Stage floatStage = new Stage();
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage){
         stage = primaryStage;
         stage.setTitle("Library Management System");
         gotoLoginUI();
         stage.show();
     }
 
-    public void gotoLoginUI() throws Exception {
+
+    /* 函数: gotoLoginUI
+     * 用法：gotoLoginUI();
+     * ------------------------------------------
+     * 跳转到登陆界面。
+     */
+
+    public void gotoLoginUI(){
         stage.setResizable(false);
-        LoginUIController loginUI = (LoginUIController)replaceSceneContent("fxml/LoginUI.fxml");
+        LoginUIController loginUI;
+        try {
+            loginUI = (LoginUIController)replaceSceneContent("fxml/LoginUI.fxml");
+        } catch (Exception e) {
+            e.printStackTrace();
+            ControllerUtils.showAlert("[错误] 登陆界面无法导入!");
+            System.out.println("ERROR::LOGIN_UI::LOAD::FAILED");
+            return;
+        }
+        assert loginUI != null;
         loginUI.setApp(this);
     }
 
-    public void gotoUserUI() throws Exception {
+
+    /* 函数: gotoUserUI
+     * 用法：gotoUserUI();
+     * ------------------------------------------
+     * 跳转到用户主界面。
+     */
+
+    public void gotoUserUI(){
         stage.setResizable(true);
-        UserUIController userUI = (UserUIController)replaceSceneContent("fxml/UserUI.fxml");
+        UserUIController userUI;
+        try {
+            userUI = (UserUIController)replaceSceneContent("fxml/UserUI.fxml");
+        } catch (Exception e) {
+            e.printStackTrace();
+            ControllerUtils.showAlert("[错误] 用户界面无法导入!");
+            System.out.println("ERROR::USER_UI::LOAD::FAILED");
+            return;
+        }
+        assert userUI != null;
         userUI.setApp(this);
     }
 
-    public void gotoAdminUI() throws Exception {
+
+    /* 函数: gotoAdminUI
+     * 用法：gotoAdminUI();
+     * ------------------------------------------
+     * 跳转到管理员主界面。
+     */
+
+    public void gotoAdminUI(){
         stage.setResizable(true);
-        AdminUIController adminUI = (AdminUIController)replaceSceneContent("fxml/AdminUI.fxml");
+        AdminUIController adminUI;
+        try {
+            adminUI = (AdminUIController)replaceSceneContent("fxml/AdminUI.fxml");
+        } catch (Exception e) {
+            e.printStackTrace();
+            ControllerUtils.showAlert("[错误] 管理员界面无法导入!");
+            System.out.println("ERROR::ADMIN_UI::LOAD::FAILED");
+            return;
+        }
+        assert adminUI != null;
         adminUI.setApp(this);
     }
 
-
-    private Initializable replaceSceneContent(String fxml) throws Exception {
-        FXMLLoader loader = new FXMLLoader();
-        InputStream in = LibraryManagementSystem.Main.class.getResourceAsStream(fxml);
-        loader.setBuilderFactory(new JavaFXBuilderFactory());
-        loader.setLocation(LibraryManagementSystem.Main.class.getResource(fxml));
-        AnchorPane page;
+    public void displayRegisterUI() {
+        floatStage.setResizable(true);
+        RegisterUIController registerUI = null;
         try {
+            FXMLLoader loader = new FXMLLoader();
+            AnchorPane page = null;
+            try (InputStream in = Main.class.getResourceAsStream("fxml/RegisterUI.fxml")) {
+                loader.setBuilderFactory(new JavaFXBuilderFactory());
+                loader.setLocation(Main.class.getResource("fxml/RegisterUI.fxml"));
+                page = loader.load(in);
+                registerUI = loader.getController();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            assert page != null;
+            Scene scene = new Scene(page);
+            floatStage.setScene(scene);
+            floatStage.sizeToScene();
+        } catch (Exception e) {
+            e.printStackTrace();
+            ControllerUtils.showAlert("[错误] 注册界面无法导入!");
+            System.out.println("ERROR::ADMIN_UI::LOAD::FAILED");
+            return;
+        }
+        assert registerUI != null;
+        registerUI.setApp(this);
+        floatStage.show();
+    }
+
+
+    /* 函数: replaceSceneContent
+     * 用法：UI = (UIController)replaceSceneContent("fxml/UI.fxml");
+     * ------------------------------------------
+     * 场景替换。
+     */
+
+    private Initializable replaceSceneContent(String fxml){
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane page;
+        try (InputStream in = Main.class.getResourceAsStream(fxml)) {
+            loader.setBuilderFactory(new JavaFXBuilderFactory());
+            loader.setLocation(Main.class.getResource(fxml));
             page = loader.load(in);
-        } finally {
-            in.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
         }
         Scene scene = new Scene(page);
         stage.setScene(scene);
@@ -66,11 +146,16 @@ public class Main extends Application {
         return (Initializable) loader.getController();
     }
 
-    public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/Library?serverTimezone=GMT&&useSSL=false&allowMultiQueries=true",
-                "root", "lyz5621617");
+
+    /* 主函数 */
+    public static void main(String[] args)  {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            ControllerUtils.showAlert("[错误] 初始化数据库驱动失败!");
+            System.out.println("ERROR::CLASS::INIT");
+        }
         launch(args);
     }
 }

@@ -91,9 +91,10 @@ public class UserUIController  implements Initializable {
             default: userStateField.setText("【证状态】" + "系统出错，请联系工作人员");
         }
         switch(type) {
-            case 0:  typeField.setText("【读者类型】C（100元6册）"); break;
-            case 1:  typeField.setText("【读者类型】B（200元12册）"); break;
-            case 2:  typeField.setText("【读者类型】A（500元无限制）"); break;
+            case 0:  typeField.setText("【读者类型】D（仅查询）"); break;
+            case 1:  typeField.setText("【读者类型】C（100元6册）"); break;
+            case 2:  typeField.setText("【读者类型】B（200元12册）"); break;
+            case 4:  typeField.setText("【读者类型】A（500元无限制）"); break;
             default: typeField.setText("【读者类型】系统出错, 请联系工作人员"); break;
         }
         rentCountField.setText("【已借/可借】" + rentNum + "/" + rentMax);

@@ -1,6 +1,7 @@
 package LibraryManagementSystem.controller;
 
 import LibraryManagementSystem.BookInfo;
+import LibraryManagementSystem.ControllerUtils;
 import LibraryManagementSystem.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,6 +17,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AdminUIController implements Initializable {
@@ -45,8 +49,12 @@ public class AdminUIController implements Initializable {
     @FXML private TableColumn<BookInfo, String> indexCol;
     @FXML private TableColumn<BookInfo, Integer> numCol;
     private ObservableList<BookInfo> searchBookData = FXCollections.observableArrayList();
+    @FXML private TextField returnIdField;
+    @FXML private TextField borrowIdField;
+    @FXML private TextField borrowListField;
 
     private String managerName = "", priv = "";
+    private SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
     public void setApp(Main app) {
         this.application = app;
@@ -88,25 +96,6 @@ public class AdminUIController implements Initializable {
         rentPubYearCol.setCellValueFactory(new PropertyValueFactory<>("pubYear"));
         dueDateCol.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
         rentDateCol.setCellValueFactory(new PropertyValueFactory<>("rentDate"));
-        try {
-            stmt = Main.conn.createStatement();
-            rset = stmt.executeQuery(
-                    "select * from user_account natural join borrow natural join book where user_id = " + Integer.toString(Main.id));
-            while(rset.next()) {
-                rentBookData.add(new BookInfo(
-                        rset.getString("book_name"),
-                        rset.getString("author"),
-                        rset.getString("press"),
-                        rset.getString("pub_date").substring(0, 4),
-                        rset.getString("rent_date"),
-                        rset.getString("due_date")
-                ));
-            }
-            rentTableField.setItems(rentBookData);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
 
         // 初始化图书查询
         searchNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -119,39 +108,79 @@ public class AdminUIController implements Initializable {
     }
 
     public void search(ActionEvent actionEvent) {
-        searchBookData.clear();
-        tabPane.getSelectionModel().select(searchTab);
+        ControllerUtils.search(searchBookData, tabPane, searchTab, searchOption, searchField, searchTableField);
+
+    }
+
+    public void enterReturnId(ActionEvent actionEvent) {
+        rentBookData.clear();
+        ControllerUtils.extractRentBookData(rentBookData, rentTableField, Integer.parseInt(returnIdField.getText()));
+    }
+
+    public void borrowAll(ActionEvent actionEvent) {
+        Date rentDate = new Date();
+        Date dueDate = new Date(rentDate.getTime() + 7*24*60*60*1000);
+        String rentDateStr = df.format(rentDate);
+        String dueDateStr = df.format(dueDate);
         PreparedStatement pStmt;
-        ResultSet rset = null;
+
         try {
-            if (searchOption.getValue().equals("书名"))
-                pStmt = Main.conn.prepareStatement("select * from book where book_name like ?");
-            else if(searchOption.getValue().equals("作者"))
-                pStmt = Main.conn.prepareStatement("select * from book where author like ?");
-            else if(searchOption.getValue().equals("出版社"))
-                pStmt = Main.conn.prepareStatement("select * from book where press like ?");
-            else if(searchOption.getValue().equals("出版日期"))
-                pStmt = Main.conn.prepareStatement("select * from book where pub_date like ?");
-            else {
-                System.out.println("ERROR::CHOICE_BOX");
-                return;
-            }
-            pStmt.setString(1, "%" + searchField.getText() + "%");
-            rset = pStmt.executeQuery();
-            while(rset.next()) {
-                searchBookData.add(new BookInfo(
-                        rset.getString("book_name"),
-                        rset.getString("author"),
-                        rset.getString("press"),
-                        rset.getString("pub_date").substring(0, 4),
-                        rset.getString("book_index"),
-                        rset.getInt("book_num"))
-                );
-            }
-            searchTableField.setItems(searchBookData);
+            pStmt = Main.conn.prepareStatement(
+                    "INSERT INTO borrow (book_index, user_id, rent_date, due_date) VALUES (?, ?, ?, ?);" +
+                            "UPDATE book SET book_num = book_num - 1; where book_index = ?" +
+                            "UPDATE user_account SET rent_num = rent_num + 1 where user_id = ?"
+            );
+            pStmt.setInt(2, Integer.parseInt(borrowIdField.getText()));
+            pStmt.setInt(6, Integer.parseInt(borrowIdField.getText()));
+            pStmt.setString(3, rentDateStr);
+            pStmt.setString(4, dueDateStr);
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("ERROR::PSTMT::CREATION");
+            return;
         }
+        String[] borrowList = borrowListField.getText().split(";");
+        for(int i=0; i<borrowList.length; i++) {
+            if(borrowList[i].isEmpty())
+                continue;
+            else {
+                try {
+                    pStmt.setString(1, borrowList[i]);
+                    pStmt.setString(5, borrowList[i]);
+                    pStmt.executeUpdate();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    System.out.println("ERROR::PSTMT::SET_VALUE");
+                }
+            }
 
+        }
+    }
+
+    public void returnSelected(ActionEvent actionEvent) {
+        PreparedStatement pStmt;
+        try {
+            pStmt = Main.conn.prepareStatement(
+                    "DELETE FROM borrow WHERE book_index = ?;" +
+                            " UPDATE book SET book_num = book_num + 1 WHERE book_index = ?;" +
+                            " UPDATE user_account SET rent_num = rent_num - 1 WHERE user_id = ?;"
+            );
+            pStmt.setInt(3, Integer.parseInt(returnIdField.getText()));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return;
+        }
+        for (BookInfo aRentBookData : rentBookData) {
+            if (aRentBookData.getChoice().isSelected()) {
+                try {
+                    pStmt.setString(1, aRentBookData.getIndex());
+                    pStmt.setString(2, aRentBookData.getIndex());
+                    pStmt.executeUpdate();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        enterReturnId(null);
     }
 }

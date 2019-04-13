@@ -60,19 +60,19 @@
                                       <Insets left="10.0" top="10.0" />
                                   </HBox.margin>
                               </ChoiceBox>
-                              <TextField prefHeight="29.0" prefWidth="359.0">
+                              <TextField fx:id="searchField" prefHeight="29.0" prefWidth="359.0">
                                   <HBox.margin>
                                       <Insets left="10.0" top="10.0" />
                                   </HBox.margin>
                               </TextField>
-                              <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="77.0" text="查询">
+                              <Button fx:id="searchButton" mnemonicParsing="false" onAction="#search" prefHeight="29.0" prefWidth="77.0" text="查询">
                                   <HBox.margin>
                                       <Insets left="10.0" top="10.0" />
                                   </HBox.margin>
                               </Button>
                               <AnchorPane maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="358.0" HBox.hgrow="ALWAYS">
                                   <children>
-                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="欢迎您，马冬梅" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
+                                      <Text fx:id="welcome" strokeType="OUTSIDE" strokeWidth="0.0" text="欢迎您，马冬梅" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
                                           <HBox.margin>
                                               <Insets bottom="10.0" right="10.0" />
                                           </HBox.margin>
@@ -91,7 +91,7 @@
             </AnchorPane>
                 <AnchorPane VBox.vgrow="ALWAYS">
                     <children>
-                        <TabPane prefHeight="525.0" prefWidth="900.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TabPane fx:id="tabPane" prefHeight="525.0" prefWidth="900.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <tabs>
                                 <Tab closable="false" text="个人信息">
                                     <content>
@@ -107,9 +107,9 @@
                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                     </rowConstraints>
                                                     <children>
-                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="【工号】00000" />
-                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="【姓名】马冬梅" GridPane.columnIndex="1" />
-                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="【权限级别】A" GridPane.rowIndex="1" />
+                                                        <Text fx:id="managerIdField" strokeType="OUTSIDE" strokeWidth="0.0" text="【工号】00000" />
+                                                        <Text fx:id="managerNameField" strokeType="OUTSIDE" strokeWidth="0.0" text="【姓名】马冬梅" GridPane.columnIndex="1" />
+                                                        <Text fx:id="privField" strokeType="OUTSIDE" strokeWidth="0.0" text="【权限级别】A" GridPane.rowIndex="1" />
                                                         <Text strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                     </children>
                                                 </GridPane>
@@ -137,9 +137,9 @@
                                                   </rowConstraints>
                                                    <children>
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="输入借阅证卡号" />
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="输入遇借阅的图书索书号" GridPane.rowIndex="1" />
-                                                      <TextField GridPane.columnIndex="1" />
-                                                      <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="输入欲借阅的图书索书号" GridPane.rowIndex="1" />
+                                                      <TextField fx:id="borrowIdField" GridPane.columnIndex="1" />
+                                                      <TextField fx:id="borrowListField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="提示：多本图书请按分号';'分开，结尾不需要分号。）" GridPane.columnSpan="2" GridPane.rowIndex="2" />
                                                    </children>
                                                 </GridPane>
@@ -147,7 +147,7 @@
                                           </AnchorPane>
                                                         <HBox alignment="TOP_RIGHT" prefHeight="57.0" prefWidth="832.0">
                                                             <children>
-                                                                <Button mnemonicParsing="false" text="一键借阅">
+                                                                <Button mnemonicParsing="false" onAction="#borrowAll" text="一键借阅">
                                                                     <HBox.margin>
                                                                         <Insets right="20.0" top="20.0" />
                                                                     </HBox.margin>
@@ -166,17 +166,40 @@
                                  <children>
                                     <VBox prefHeight="200.0" prefWidth="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
+                                          <AnchorPane prefHeight="27.0" prefWidth="861.0">
+                                             <children>
+                                                <HBox prefHeight="42.0" prefWidth="861.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="输入待还书的证件号">
+                                                         <HBox.margin>
+                                                            <Insets left="20.0" right="10.0" top="10.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                      <TextField fx:id="returnIdField" prefHeight="29.0" prefWidth="247.0">
+                                                         <HBox.margin>
+                                                            <Insets top="5.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                      <Button fx:id="sureButton" mnemonicParsing="false" onAction="#enterReturnId" prefHeight="29.0" prefWidth="75.0" text="确定">
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" top="5.0" />
+                                                         </HBox.margin>
+                                                      </Button>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </AnchorPane>
                                           <AnchorPane>
                                              <children>
-                                                <TableView layoutY="18.0" prefHeight="282.0" prefWidth="821.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="18.0">
+                                                <TableView fx:id="rentTableField" layoutY="18.0" prefHeight="282.0" prefWidth="821.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="18.0">
                                                   <columns>
-                                                    <TableColumn prefWidth="75.0" text="勾选" />
-                                                    <TableColumn prefWidth="140.0" text="书名" />
-                                                      <TableColumn prefWidth="130.0" text="作者" />
-                                                      <TableColumn prefWidth="83.0" text="出版社" />
-                                                      <TableColumn prefWidth="140.0" text="出版年份" />
-                                                      <TableColumn minWidth="6.0" prefWidth="159.0" text="借阅时间" />
-                                                      <TableColumn minWidth="6.0" prefWidth="93.0" text="到期时间" />
+                                                    <TableColumn fx:id="choiceCol" prefWidth="75.0" text="勾选" />
+                                                    <TableColumn fx:id="rentNameCol" prefWidth="140.0" text="书名" />
+                                                      <TableColumn fx:id="rentAuthorCol" prefWidth="130.0" text="作者" />
+                                                      <TableColumn fx:id="rentPressCol" prefWidth="83.0" text="出版社" />
+                                                      <TableColumn fx:id="rentPubYearCol" prefWidth="140.0" text="出版年份" />
+                                                      <TableColumn fx:id="rentDateCol" minWidth="6.0" prefWidth="159.0" text="借阅时间" />
+                                                      <TableColumn fx:id="dueDateCol" minWidth="6.0" prefWidth="93.0" text="到期时间" />
                                                   </columns>
                                                 </TableView>
                                              </children>
@@ -184,7 +207,7 @@
                                           <AnchorPane prefHeight="129.0" prefWidth="861.0" VBox.vgrow="ALWAYS">
                                              <children>
                                                 <VBox prefHeight="138.0" prefWidth="821.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="360.0" />
-                                                <Button layoutX="731.0" layoutY="14.0" mnemonicParsing="false" text="归还选中书籍" />
+                                                <Button layoutX="731.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnSelected" text="归还选中书籍" />
                                              </children>
                                           </AnchorPane>
                                        </children>
@@ -193,16 +216,18 @@
                               </AnchorPane>
                            </content>
                         </Tab>
-                        <Tab text="图书查找">
+                        <Tab fx:id="searchTab" text="图书查找">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <TableView layoutX="20.0" layoutY="18.0" prefHeight="255.0" prefWidth="821.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="18.0">
+                                    <TableView fx:id="searchTableField" layoutX="20.0" layoutY="18.0" prefHeight="255.0" prefWidth="821.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="18.0">
                                        <columns>
-                                          <TableColumn prefWidth="140.0" text="书名" />
-                                          <TableColumn prefWidth="222.0" text="作者" />
-                                          <TableColumn prefWidth="263.0" text="出版社" />
-                                          <TableColumn prefWidth="195.0" text="出版年份" />
+                                          <TableColumn fx:id="searchNameCol" prefWidth="140.0" text="书名" />
+                                          <TableColumn fx:id="searchAuthorCol" prefWidth="107.0" text="作者" />
+                                          <TableColumn fx:id="searchPressCol" prefWidth="135.0" text="出版社" />
+                                          <TableColumn fx:id="searchPubYearCol" prefWidth="137.0" text="出版年份" />
+                                          <TableColumn fx:id="indexCol" prefWidth="137.0" text="索书号" />
+                                          <TableColumn fx:id="numCol" prefWidth="137.0" text="数量" />
                                        </columns>
                                     </TableView>
                                  </children>

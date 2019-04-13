@@ -60,12 +60,12 @@
                                       <Insets left="10.0" top="10.0" />
                                   </HBox.margin>
                               </ChoiceBox>
-                              <TextField prefHeight="29.0" prefWidth="359.0">
+                              <TextField fx:id="searchField" prefHeight="29.0" prefWidth="359.0">
                                   <HBox.margin>
                                       <Insets left="10.0" top="10.0" />
                                   </HBox.margin>
                               </TextField>
-                              <Button mnemonicParsing="false" onAction="#search" prefHeight="29.0" prefWidth="77.0" text="查询">
+                              <Button fx:id="searchButton" mnemonicParsing="false" onAction="#search" prefHeight="29.0" prefWidth="77.0" text="查询">
                                   <HBox.margin>
                                       <Insets left="10.0" top="10.0" />
                                   </HBox.margin>
@@ -137,9 +137,9 @@
                                                   </rowConstraints>
                                                    <children>
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="输入借阅证卡号" />
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="输入遇借阅的图书索书号" GridPane.rowIndex="1" />
-                                                      <TextField GridPane.columnIndex="1" />
-                                                      <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="输入欲借阅的图书索书号" GridPane.rowIndex="1" />
+                                                      <TextField fx:id="borrowIdField" GridPane.columnIndex="1" />
+                                                      <TextField fx:id="borrowListField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="提示：多本图书请按分号';'分开，结尾不需要分号。）" GridPane.columnSpan="2" GridPane.rowIndex="2" />
                                                    </children>
                                                 </GridPane>
@@ -147,7 +147,7 @@
                                           </AnchorPane>
                                                         <HBox alignment="TOP_RIGHT" prefHeight="57.0" prefWidth="832.0">
                                                             <children>
-                                                                <Button mnemonicParsing="false" text="一键借阅">
+                                                                <Button mnemonicParsing="false" onAction="#borrowAll" text="一键借阅">
                                                                     <HBox.margin>
                                                                         <Insets right="20.0" top="20.0" />
                                                                     </HBox.margin>
@@ -180,7 +180,7 @@
                                                             <Insets top="5.0" />
                                                          </HBox.margin>
                                                       </TextField>
-                                                      <Button fx:id="sureButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="75.0" text="确定">
+                                                      <Button fx:id="sureButton" mnemonicParsing="false" onAction="#enterReturnId" prefHeight="29.0" prefWidth="75.0" text="确定">
                                                          <HBox.margin>
                                                             <Insets left="10.0" top="5.0" />
                                                          </HBox.margin>
@@ -207,7 +207,7 @@
                                           <AnchorPane prefHeight="129.0" prefWidth="861.0" VBox.vgrow="ALWAYS">
                                              <children>
                                                 <VBox prefHeight="138.0" prefWidth="821.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="360.0" />
-                                                <Button layoutX="731.0" layoutY="14.0" mnemonicParsing="false" text="归还选中书籍" />
+                                                <Button layoutX="731.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnSelected" text="归还选中书籍" />
                                              </children>
                                           </AnchorPane>
                                        </children>
@@ -220,7 +220,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <TableView layoutX="20.0" layoutY="18.0" prefHeight="255.0" prefWidth="821.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="18.0">
+                                    <TableView fx:id="searchTableField" layoutX="20.0" layoutY="18.0" prefHeight="255.0" prefWidth="821.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="18.0">
                                        <columns>
                                           <TableColumn fx:id="searchNameCol" prefWidth="140.0" text="书名" />
                                           <TableColumn fx:id="searchAuthorCol" prefWidth="107.0" text="作者" />

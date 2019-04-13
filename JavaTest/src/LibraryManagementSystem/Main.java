@@ -69,7 +69,7 @@ public class Main extends Application {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/Library?serverTimezone=GMT&&useSSL=false",
+                "jdbc:mysql://localhost:3306/Library?serverTimezone=GMT&&useSSL=false&allowMultiQueries=true",
                 "root", "lyz5621617");
 
         launch(args);

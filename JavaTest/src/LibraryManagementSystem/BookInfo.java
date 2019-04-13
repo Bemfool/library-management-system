@@ -14,7 +14,7 @@ public class BookInfo {
     private StringProperty index;
     private IntegerProperty num;
 
-    public BookInfo(String name, String author, String press, String pubYear, String rentDate, String dueDate) {
+    public BookInfo(String name, String author, String press, String pubYear, String rentDate, String dueDate, String index) {
         this.choice = new SimpleObjectProperty<CheckBox>(new CheckBox());
         this.name = new SimpleStringProperty(name);
         this.author = new SimpleStringProperty(author);
@@ -22,6 +22,7 @@ public class BookInfo {
         this.pubYear = new SimpleStringProperty(pubYear);
         this.rentDate = new SimpleStringProperty(rentDate);
         this.dueDate = new SimpleStringProperty(dueDate);
+        this.index = new SimpleStringProperty(index);
     }
 
     public BookInfo(String name, String author, String press, String pubYear, String index, int num) {

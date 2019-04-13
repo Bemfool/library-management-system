@@ -1,6 +1,7 @@
 package LibraryManagementSystem.controller;
 
 import LibraryManagementSystem.BookInfo;
+import LibraryManagementSystem.ControllerUtils;
 import LibraryManagementSystem.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -107,25 +108,7 @@ public class UserUIController  implements Initializable {
         rentPubYearCol.setCellValueFactory(new PropertyValueFactory<>("pubYear"));
         dueDateCol.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
         rentDateCol.setCellValueFactory(new PropertyValueFactory<>("rentDate"));
-        try {
-            stmt = Main.conn.createStatement();
-            rset = stmt.executeQuery(
-                    "select * from user_account natural join borrow natural join book where user_id = " + Integer.toString(Main.id));
-            while(rset.next()) {
-                rentBookData.add(new BookInfo(
-                        rset.getString("book_name"),
-                        rset.getString("author"),
-                        rset.getString("press"),
-                        rset.getString("pub_date").substring(0, 4),
-                        rset.getString("rent_date"),
-                        rset.getString("due_date")
-                ));
-            }
-            rentTableField.setItems(rentBookData);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
+        ControllerUtils.extractRentBookData(rentBookData, rentTableField, Main.id);
 
         // 初始化图书查询
         searchNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -138,39 +121,7 @@ public class UserUIController  implements Initializable {
     }
 
     public void search(ActionEvent actionEvent) {
-        searchBookData.clear();
-        tabPane.getSelectionModel().select(searchTab);
-        PreparedStatement pStmt;
-        ResultSet rset = null;
-        try {
-            if (searchOption.getValue().equals("书名"))
-                pStmt = Main.conn.prepareStatement("select * from book where book_name like ?");
-            else if(searchOption.getValue().equals("作者"))
-                pStmt = Main.conn.prepareStatement("select * from book where author like ?");
-            else if(searchOption.getValue().equals("出版社"))
-                pStmt = Main.conn.prepareStatement("select * from book where press like ?");
-            else if(searchOption.getValue().equals("出版日期"))
-                pStmt = Main.conn.prepareStatement("select * from book where pub_date like ?");
-            else {
-                System.out.println("ERROR::CHOICE_BOX");
-                return;
-            }
-            pStmt.setString(1, "%" + searchField.getText() + "%");
-            rset = pStmt.executeQuery();
-            while(rset.next()) {
-                searchBookData.add(new BookInfo(
-                        rset.getString("book_name"),
-                        rset.getString("author"),
-                        rset.getString("press"),
-                        rset.getString("pub_date").substring(0, 4),
-                        rset.getString("book_index"),
-                        rset.getInt("book_num"))
-                );
-            }
-            searchTableField.setItems(searchBookData);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        ControllerUtils.search(searchBookData, tabPane, searchTab, searchOption, searchField, searchTableField);
 
     }
 

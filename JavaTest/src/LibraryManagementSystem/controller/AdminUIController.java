@@ -1,7 +1,6 @@
 package LibraryManagementSystem.controller;
 
 import LibraryManagementSystem.BookInfo;
-import LibraryManagementSystem.ControllerUtils;
 import LibraryManagementSystem.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +18,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class AdminUIController implements Initializable {
@@ -127,7 +125,7 @@ public class AdminUIController implements Initializable {
         try {
             pStmt = Main.conn.prepareStatement(
                     "INSERT INTO borrow (book_index, user_id, rent_date, due_date) VALUES (?, ?, ?, ?);" +
-                            "UPDATE book SET book_num = book_num - 1; where book_index = ?" +
+                            "UPDATE book SET book_num = book_num - 1 where book_index = ?;" +
                             "UPDATE user_account SET rent_num = rent_num + 1 where user_id = ?"
             );
             pStmt.setInt(2, Integer.parseInt(borrowIdField.getText()));

@@ -1,7 +1,6 @@
 package LibraryManagementSystem.controller;
 
 import LibraryManagementSystem.BookInfo;
-import LibraryManagementSystem.ControllerUtils;
 import LibraryManagementSystem.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,7 +14,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 
 import java.net.URL;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;

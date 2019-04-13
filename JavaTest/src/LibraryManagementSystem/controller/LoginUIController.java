@@ -25,33 +25,53 @@ public class LoginUIController implements Initializable {
     @FXML private TextField userField;
 
     public void loginButton(ActionEvent actionEvent) throws Exception {
-        // TODO 可以完善账号或密码为空时候的反馈
-        if(userField.getText().isEmpty() || passwordField.getText().isEmpty())
+        // 选择的按钮，`普通用户`或`管理员`
+        RadioButton selectedBtn = (RadioButton)privCheck.getSelectedToggle();
+
+        // 判断账号密码不为空
+        if(userField.getText().isEmpty() || passwordField.getText().isEmpty()) {
+            ControllerUtils.showAlert("[错误] 账户名或密码为空!");
+            System.out.println("ERROR::USER_ID||PASSWORD::EMPTY");
             return;
+        }
+
+        // 通过长度进行判断账户名是否输入错误
+        if(userField.getText().length() != 10 && selectedBtn.getText().equals("普通用户")) {
+            ControllerUtils.showAlert("[错误] 用户账户名长度不对!");
+            System.out.println("ERROR::USER_ID::LENGTH");
+            return;
+        } else if(userField.getText().length() != 5 && selectedBtn.getText().equals("管理员")) {
+            ControllerUtils.showAlert("[错误] 管理员账户名长度不对!");
+            System.out.println("ERROR::MANAGER_ID::LENGTH");
+            return;
+        }
+
+        // 对输入的密码进行MD5加密
         MessageDigest md5 = MessageDigest.getInstance("MD5");
         md5.update(passwordField.getText().getBytes(), 0, passwordField.getText().length());
         String md5Password = new BigInteger(1, md5.digest()).toString(16);
+
         PreparedStatement pStmt;
         ResultSet rset;
-        RadioButton selectedBtn = (RadioButton)privCheck.getSelectedToggle();
         if(selectedBtn.getText().equals("普通用户")) {
-            // 跳转普通用户界面
-            pStmt = Main.conn.prepareStatement("select password from user_account where user_id = ?");
+            // 判断密码正确性，正确则跳转普通用户界面
+            pStmt = Main.conn.prepareStatement("SELECT password FROM user_account WHERE user_id = ?");
             pStmt.setInt(1, Integer.parseInt(userField.getText()));
             rset = pStmt.executeQuery();
             if(rset.next())
                 if(md5Password.equals(rset.getString("password"))) {
                     Main.id = Integer.parseInt(userField.getText());
                     application.gotoUserUI();
-                } else
-                    // TODO 完善输错密码时候的反馈
-                    System.out.println("Wrong password");
+                } else {
+
+                    System.out.println("ERROR::PASSWORD::WRONG");
+                }
             else
                 // TODO 完善输错账号时候的反馈
                 System.out.println("Wrong user id");
         } else {
             // 跳转管理员界面
-            pStmt = Main.conn.prepareStatement("select password from manager_account where manager_id = ?");
+            pStmt = Main.conn.prepareStatement("SELECT password FROM manager_account WHERE manager_id = ?");
             pStmt.setInt(1, Integer.parseInt(userField.getText()));
             rset = pStmt.executeQuery();
             if(rset.next())

@@ -71,7 +71,6 @@ public class Main extends Application {
         conn = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/Library?serverTimezone=GMT&&useSSL=false&allowMultiQueries=true",
                 "root", "lyz5621617");
-
         launch(args);
     }
 }

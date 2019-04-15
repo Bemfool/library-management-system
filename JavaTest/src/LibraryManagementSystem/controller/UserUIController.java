@@ -4,7 +4,6 @@ import LibraryManagementSystem.BookInfo;
 import LibraryManagementSystem.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -52,26 +51,39 @@ public class UserUIController  implements Initializable {
     private String userName = "";
     private int rentNum = -1, rentMax = -1, userState = -1, type = -1;
 
+
+    /* 函数: setApp
+     * 用法: registerUI.setApp(this);
+     * ----------------------------------------------------------------------------
+     * 用于界面切换。
+     */
+
     public void setApp(Main app) {
         this.application = app;
     }
 
+
+    /* 函数: initialize
+     * ----------------------------------------------------------------------------
+     * 界面初始化。
+     */
+
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        // 初始化ChoiceBox
+        /* 初始化选择框 */
         searchOption.setItems(FXCollections.observableArrayList(
-                "书名", "作者", "出版社", "出版日期"
-        ));
+                "书名", "作者", "出版社", "出版日期"));
         searchOption.setValue("书名");
 
-        // 初始化个人界面
+        /* 初始化个人界面 */
         Statement stmt;
         ResultSet rset;
         try {
+            /* 从数据库中读取用户信息 */
             stmt = Main.conn.createStatement();
             rset = stmt.executeQuery(
-                    "select user_name, state, reader_type, rent_num, rent_max" +
-                            " from user_account where user_id = " + Integer.toString(Main.id));
+                    "SELECT user_name, state, reader_type, rent_num, rent_max" +
+                            " FROM user_account WHERE user_id = " + Integer.toString(Main.id));
             if(rset.next()) {
                 userName = rset.getString("user_name");
                 userState = rset.getInt("state");
@@ -82,24 +94,26 @@ public class UserUIController  implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        /* 将用户信息打印到界面上 */
         userIdField.setText("【读者证号】" + String.format("%0" + 10 + "d", Main.id));
         welcome.setText("欢迎您，" + userName);
         userNameField.setText("【读者姓名】" + userName);
         switch(userState) {
-            case 0:  userStateField.setText("【证状态】" + "无效");
-            case 1:  userStateField.setText("【证状态】" + "有效");
+            case 0:  userStateField.setText("【证状态】" + "无效"); break;
+            case 1:  userStateField.setText("【证状态】" + "有效"); break;
             default: userStateField.setText("【证状态】" + "系统出错，请联系工作人员");
         }
         switch(type) {
             case 0:  typeField.setText("【读者类型】D（仅查询）"); break;
             case 1:  typeField.setText("【读者类型】C（100元6册）"); break;
             case 2:  typeField.setText("【读者类型】B（200元12册）"); break;
-            case 4:  typeField.setText("【读者类型】A（500元无限制）"); break;
-            default: typeField.setText("【读者类型】系统出错, 请联系工作人员"); break;
+            case 3:  typeField.setText("【读者类型】A（500元无限制）"); break;
+            default: typeField.setText("【读者类型】系统出错, 请联系工作人员");
         }
         rentCountField.setText("【已借/可借】" + rentNum + "/" + rentMax);
 
-        // 初始化借阅查询
+        /* 初始化借阅查询的表格 */
         choiceCol.setCellValueFactory(new PropertyValueFactory<>("choice"));
         rentNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         rentAuthorCol.setCellValueFactory(new PropertyValueFactory<>("author"));
@@ -109,23 +123,33 @@ public class UserUIController  implements Initializable {
         rentDateCol.setCellValueFactory(new PropertyValueFactory<>("rentDate"));
         ControllerUtils.extractRentBookData(rentBookData, rentTableField, Main.id);
 
-        // 初始化图书查询
+        /* 初始化图书查询的表格 */
         searchNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         searchAuthorCol.setCellValueFactory(new PropertyValueFactory<>("author"));
         searchPressCol.setCellValueFactory(new PropertyValueFactory<>("press"));
         searchPubYearCol.setCellValueFactory(new PropertyValueFactory<>("pubYear"));
         indexCol.setCellValueFactory(new PropertyValueFactory<>("index"));
         numCol.setCellValueFactory(new PropertyValueFactory<>("num"));
-
     }
 
-    public void search(ActionEvent actionEvent) {
+
+    /* 函数: search
+     * ----------------------------------------------------------------------------
+     * 通过搜索选项和搜索内容对数据库内容进行检索，并将查找的结果打印到表格上。
+     */
+
+    public void search() {
         ControllerUtils.search(searchBookData, tabPane, searchTab, searchOption, searchField, searchTableField);
-
     }
+
+
+    /* 函数: enterKey
+     * ----------------------------------------------------------------------------
+     * 在搜索栏回车可以直接搜索。
+     */
 
     public void enterKey(KeyEvent keyEvent) {
         if(keyEvent.getCode() == KeyCode.ENTER)
-            search(null);
+            search();
     }
 }

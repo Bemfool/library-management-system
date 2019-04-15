@@ -14,8 +14,9 @@ public class BookInfo {
     private StringProperty index;
     private IntegerProperty num;
 
+    /* 初始化：用于借阅查询 */
     public BookInfo(String name, String author, String press, String pubYear, String rentDate, String dueDate, String index) {
-        this.choice = new SimpleObjectProperty<CheckBox>(new CheckBox());
+        this.choice = new SimpleObjectProperty<>(new CheckBox());
         this.name = new SimpleStringProperty(name);
         this.author = new SimpleStringProperty(author);
         this.press = new SimpleStringProperty(press);
@@ -25,6 +26,7 @@ public class BookInfo {
         this.index = new SimpleStringProperty(index);
     }
 
+    /* 初始化：用于图书查询 */
     public BookInfo(String name, String author, String press, String pubYear, String index, int num) {
         this.name = new SimpleStringProperty(name);
         this.author = new SimpleStringProperty(author);

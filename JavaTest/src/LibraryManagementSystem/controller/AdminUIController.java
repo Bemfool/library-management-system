@@ -52,21 +52,33 @@ public class AdminUIController implements Initializable {
     @FXML private TextField borrowListField;
 
     private String managerName = "", priv = "";
+
+    /* 日期格式 */
     private SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
-    public void setApp(Main app) {
-        this.application = app;
-    }
+
+    /* 函数: setApp
+     * 用法: registerUI.setApp(this);
+     * ----------------------------------------------------------------------------
+     * 用于界面切换。
+     */
+
+    public void setApp(Main app) { this.application = app; }
+
+
+    /* 函数: initialize
+     * ----------------------------------------------------------------------------
+     * 界面初始化。
+     */
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        // 初始化ChoiceBox
+        /* 初始化选择框 */
         searchOption.setItems(FXCollections.observableArrayList(
-                "书名", "作者", "出版社", "出版日期"
-        ));
+                "书名", "作者", "出版社", "出版日期"));
         searchOption.setValue("书名");
 
-        // 初始化个人界面
+        /* 初始化管理员个人界面 */
         Statement stmt;
         ResultSet rset;
         try {
@@ -86,7 +98,7 @@ public class AdminUIController implements Initializable {
         privField.setText("【权限级别】" + priv);
         welcome.setText("欢迎您，" + managerName);
 
-        // 初始化借阅查询
+        /* 初始化借阅查询表格 */
         choiceCol.setCellValueFactory(new PropertyValueFactory<>("choice"));
         rentNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         rentAuthorCol.setCellValueFactory(new PropertyValueFactory<>("author"));
@@ -95,33 +107,52 @@ public class AdminUIController implements Initializable {
         dueDateCol.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
         rentDateCol.setCellValueFactory(new PropertyValueFactory<>("rentDate"));
 
-        // 初始化图书查询
+        /* 初始化图书查询表格 */
         searchNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         searchAuthorCol.setCellValueFactory(new PropertyValueFactory<>("author"));
         searchPressCol.setCellValueFactory(new PropertyValueFactory<>("press"));
         searchPubYearCol.setCellValueFactory(new PropertyValueFactory<>("pubYear"));
         indexCol.setCellValueFactory(new PropertyValueFactory<>("index"));
         numCol.setCellValueFactory(new PropertyValueFactory<>("num"));
-
     }
 
-    public void search(ActionEvent actionEvent) {
+
+    /* 函数: search
+     * ----------------------------------------------------------------------------
+     * 通过搜索选项和搜索内容对数据库内容进行检索，并将查找的结果打印到表格上
+     */
+
+    public void search() {
         ControllerUtils.search(searchBookData, tabPane, searchTab, searchOption, searchField, searchTableField);
-
     }
 
-    public void enterReturnId(ActionEvent actionEvent) {
+
+    /* 函数: enterReturnId
+     * ----------------------------------------------------------------------------
+     * 搜索该用户的借阅情况，打印到相应的表格上
+     */
+
+    public void enterReturnId() {
+        /* 打印前先清空原表格 */
         rentBookData.clear();
         ControllerUtils.extractRentBookData(rentBookData, rentTableField, Integer.parseInt(returnIdField.getText()));
     }
 
-    public void borrowAll(ActionEvent actionEvent) {
+
+    /* 函数: borrowAll
+     * ----------------------------------------------------------------------------
+     * 借阅指定索书号的书籍，并存入数据库
+     */
+
+    public void borrowAll() {
+        /* 获取当天日期和到期日期(即借阅日期+7天) */
         Date rentDate = new Date();
         Date dueDate = new Date(rentDate.getTime() + 7*24*60*60*1000);
         String rentDateStr = df.format(rentDate);
         String dueDateStr = df.format(dueDate);
-        PreparedStatement pStmt;
 
+        /* 插入数据库，并设置相应的属性 */
+        PreparedStatement pStmt;
         try {
             pStmt = Main.conn.prepareStatement(
                     "INSERT INTO borrow (book_index, user_id, rent_date, due_date) VALUES (?, ?, ?, ?);" +
@@ -133,18 +164,15 @@ public class AdminUIController implements Initializable {
             pStmt.setString(3, rentDateStr);
             pStmt.setString(4, dueDateStr);
         } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("ERROR::PSTMT::CREATION");
+            System.err.println("ERROR::PSTMT::CREATION");
             return;
         }
         String[] borrowList = borrowListField.getText().split(";");
-        for(int i=0; i<borrowList.length; i++) {
-            if(borrowList[i].isEmpty())
-                continue;
-            else {
+        for (String aBorrowList : borrowList) {
+            if (!aBorrowList.isEmpty()) {
                 try {
-                    pStmt.setString(1, borrowList[i]);
-                    pStmt.setString(5, borrowList[i]);
+                    pStmt.setString(1, aBorrowList);
+                    pStmt.setString(5, aBorrowList);
                     pStmt.executeUpdate();
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -155,7 +183,13 @@ public class AdminUIController implements Initializable {
         }
     }
 
-    public void returnSelected(ActionEvent actionEvent) {
+
+    /* 函数: returnSelected
+     * ----------------------------------------------------------------------------
+     * 归还选中的图书, 需要更新数据库
+     */
+
+    public void returnSelected() {
         PreparedStatement pStmt;
         try {
             pStmt = Main.conn.prepareStatement(
@@ -179,10 +213,15 @@ public class AdminUIController implements Initializable {
                 }
             }
         }
-        enterReturnId(null);
+        /* 还书后需要刷新借阅界面 */
+        enterReturnId();
     }
 
-    public void register(ActionEvent actionEvent) {
-        application.displayRegisterUI();
-    }
+
+    /* 函数: register
+     * ----------------------------------------------------------------------------
+     * 打开注册界面
+     */
+
+    public void register() { application.displayRegisterUI(); }
 }

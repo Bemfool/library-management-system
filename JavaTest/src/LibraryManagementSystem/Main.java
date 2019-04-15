@@ -16,8 +16,8 @@ import java.sql.Connection;
 public class Main extends Application {
     public static int id;               /* 用户/管理员账号 */
     public static Connection conn;      /* 用于数据库连接  */
-    public Stage stage;
-    public Stage floatStage = new Stage();
+    private Stage stage;
+    private Stage floatStage = new Stage();
 
     @Override
     public void start(Stage primaryStage){

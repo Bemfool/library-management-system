@@ -1,6 +1,7 @@
 package LibraryManagementSystem.controller;
 
 import LibraryManagementSystem.Main;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ import java.util.ResourceBundle;
 
 public class RegisterUIController implements Initializable {
     private Main application;
+
     @FXML private TextField nameField;
     @FXML private TextField idField;
     @FXML private TextField passwordField;
@@ -26,14 +28,19 @@ public class RegisterUIController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
+        /* 初始化类别选择框 */
         typeField.setItems(FXCollections.observableArrayList(
                 "D(仅查询)", "C(100元6册)", "B(200元12册)", "A(无限制)"
         ));
         typeField.setValue("D(仅查询)");
+
+        /* 设置默认选中输入姓名的文本框 */
+        Platform.runLater(() -> nameField.requestFocus());
     }
-    public void setApp(Main app) {
-        this.application = app;
-    }
+
+
+    public void setApp(Main app) { this.application = app; }
+
 
     public void register(ActionEvent actionEvent) {
         PreparedStatement pStmt;
@@ -109,6 +116,4 @@ public class RegisterUIController implements Initializable {
         }
     }
 
-    public void enterKey(KeyEvent keyEvent) {
-    }
 }

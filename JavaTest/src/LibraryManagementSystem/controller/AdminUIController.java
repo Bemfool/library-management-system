@@ -250,7 +250,7 @@ public class AdminUIController implements Initializable {
         try {
             Main.conn.close();
         } catch (SQLException e) {
-            ControllerUtils.showAlert("[错误] 注销失败!");
+            ControllerUtils.showAlert("[错误] 管理员注销失败!");
             System.err.println("ERROR::EXIT::FAILED");
             return;
         }
@@ -287,6 +287,6 @@ public class AdminUIController implements Initializable {
         ControllerUtils.showAlert(
                 "\n图书管理系统 v2.0\n" +
                 "\n作者: 林逸竹 " +
-                "\n联系邮箱: 897735626@qq.com\n");
+                "\n联系邮箱: 897735626@qq.com\n\n");
     }
 }

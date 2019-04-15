@@ -4,6 +4,7 @@ import LibraryManagementSystem.BookInfo;
 import LibraryManagementSystem.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -20,8 +21,12 @@ import java.util.ResourceBundle;
 
 public class UserUIController  implements Initializable {
     private Main application;
+
     @FXML private TabPane tabPane;
     @FXML private Tab searchTab;
+    @FXML private Tab personalInfoTab;
+    @FXML private Tab borrowSearchTab;
+
     @FXML private Text userIdField;
     @FXML private Text userNameField;
     @FXML private Text userStateField;
@@ -151,5 +156,55 @@ public class UserUIController  implements Initializable {
     public void enterKey(KeyEvent keyEvent) {
         if(keyEvent.getCode() == KeyCode.ENTER)
             search();
+    }
+
+
+    /* 函数: gotoPersonalInfo
+     * ----------------------------------------------------------------------------
+     * 跳转到个人信息板块
+     */
+
+    public void gotoPersonalInfo(ActionEvent actionEvent) {
+        tabPane.getSelectionModel().select(personalInfoTab);
+    }
+
+
+    /* 函数: exit
+     * ----------------------------------------------------------------------------
+     * 注销账户，回到登陆界面
+     */
+
+    public void exit(ActionEvent actionEvent) {
+        try {
+            Main.conn.close();
+        } catch (SQLException e) {
+            ControllerUtils.showAlert("[错误] 用户注销失败!");
+            System.err.println("ERROR::EXIT::FAILED");
+            return;
+        }
+        application.gotoLoginUI();
+    }
+
+
+    /* 函数: gotoBorrowSearch
+     * ----------------------------------------------------------------------------
+     * 跳转到借阅查询板块
+     */
+
+    public void gotoBorrowSearch(ActionEvent actionEvent) {
+        tabPane.getSelectionModel().select(borrowSearchTab);
+    }
+
+
+    /* 函数: about
+     * ----------------------------------------------------------------------------
+     * 打开软件相关信息，包括作者姓名和联系邮箱
+     */
+
+    public void about(ActionEvent actionEvent) {
+        ControllerUtils.showAlert(
+                "\n图书管理系统 v2.0\n" +
+                        "\n作者: 林逸竹 " +
+                        "\n联系邮箱: 897735626@qq.com\n\n");
     }
 }

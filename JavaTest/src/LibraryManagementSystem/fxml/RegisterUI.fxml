@@ -47,7 +47,7 @@
 
                 <PasswordField fx:id="passwordField" onKeyPressed="#enterKey" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
 
-                <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                <HBox spacing="10" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9">
                     <children>
                         <Button fx:id="registerButton" onAction="#register" prefHeight="30.0" prefWidth="234.0" text="注册" />
                     </children>
@@ -59,7 +59,6 @@
             <Label text="邮箱*" GridPane.rowIndex="4" />
             <Label text="手机*" GridPane.rowIndex="5" />
             <Label text="注：*为选填" GridPane.columnSpan="4" GridPane.rowIndex="7" />
-            <Button fx:id="returnButton" mnemonicParsing="false" onAction="#goBack" prefHeight="30.0" prefWidth="108.0" text="返回" GridPane.columnIndex="2" GridPane.rowIndex="9" />
             <Label text="类型" GridPane.rowIndex="6" />
             <ChoiceBox fx:id="typeField" prefHeight="30.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
             </children>

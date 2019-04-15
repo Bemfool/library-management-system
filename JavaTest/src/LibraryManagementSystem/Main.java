@@ -93,6 +93,13 @@ public class Main extends Application {
         adminUI.setApp(this);
     }
 
+
+    /* 函数: displayRegisterUI
+     * 用法：displayRegisterUI();
+     * ------------------------------------------
+     * 打开注册界面。
+     */
+
     public void displayRegisterUI() {
         floatStage.setResizable(true);
         RegisterUIController registerUI = null;

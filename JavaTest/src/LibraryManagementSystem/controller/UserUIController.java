@@ -14,6 +14,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -206,5 +207,64 @@ public class UserUIController  implements Initializable {
                 "\n图书管理系统 v2.0\n" +
                         "\n作者: 林逸竹 " +
                         "\n联系邮箱: 897735626@qq.com\n\n");
+    }
+
+
+    /* 函数: renewAll
+     * ----------------------------------------------------------------------------
+     * 续借所有书籍，每次续借增加7天期限。
+     */
+
+    public void renewAll(ActionEvent actionEvent) {
+        try {
+            PreparedStatement pStmt = Main.conn.prepareStatement(
+                    "UPDATE library.borrow " +
+                            "SET due_date = DATE_ADD(due_date, INTERVAL 7 DAY) " +
+                            "WHERE user_id = ?");
+            pStmt.setInt(1, Main.id);
+            pStmt.executeUpdate();
+            ControllerUtils.showAlert("[成功] 续借所有书籍成功!!");
+            System.out.println("SUCCESS::RENEW_ALL");
+        } catch (SQLException e) {
+//            e.printStackTrace();
+            ControllerUtils.showAlert("[错误] 续借所有书籍失败!\n" +
+                    "请联系相关工作人员进行检查");
+            System.err.println("ERROR::RENEW_ALL::FAILED");
+            return;
+        }
+        rentBookData.clear();
+        ControllerUtils.extractRentBookData(rentBookData, rentTableField, Main.id);
+    }
+
+
+    /* 函数: renewSelected
+     * ----------------------------------------------------------------------------
+     * 续借选定的书籍，每次续借增加7天期限。
+     */
+
+    public void renewSelected(ActionEvent actionEvent) {
+        try {
+            PreparedStatement pStmt = Main.conn.prepareStatement(
+                    "UPDATE library.borrow " +
+                            "SET due_date = DATE_ADD(due_date, INTERVAL 7 DAY) " +
+                            "WHERE user_id = ? AND book_index = ?");
+            pStmt.setInt(1, Main.id);
+            for (BookInfo aRentBookData : rentBookData) {
+                if (aRentBookData.getChoice().isSelected()) {
+                    pStmt.setString(2, aRentBookData.getIndex());
+                    pStmt.executeUpdate();
+                }
+            }
+            ControllerUtils.showAlert("[成功] 续借选择的书籍成功!!");
+            System.out.println("SUCCESS::RENEW_SELECTED");
+        } catch (SQLException e) {
+//            e.printStackTrace();
+            ControllerUtils.showAlert("[错误] 续借选择的书籍失败!\n" +
+                    "请联系相关工作人员进行检查");
+            System.err.println("ERROR::RENEW_SELECTED::FAILED");
+            return;
+        }
+        rentBookData.clear();
+        ControllerUtils.extractRentBookData(rentBookData, rentTableField, Main.id);
     }
 }

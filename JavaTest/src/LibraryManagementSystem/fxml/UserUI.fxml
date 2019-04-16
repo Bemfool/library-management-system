@@ -119,12 +119,12 @@
                                                         </TableView>
                                                         <HBox alignment="TOP_RIGHT" prefHeight="57.0" prefWidth="832.0">
                                                             <children>
-                                                                <Button mnemonicParsing="false" text="一键全部续借">
+                                                                <Button mnemonicParsing="false" onAction="#renewAll" text="一键全部续借">
                                                                     <HBox.margin>
                                                                         <Insets right="20.0" top="20.0" />
                                                                     </HBox.margin>
                                                                 </Button>
-                                                                <Button mnemonicParsing="false" text="续借选中书籍">
+                                                                <Button mnemonicParsing="false" onAction="#renewSelected" text="续借选中书籍">
                                                                     <HBox.margin>
                                                                         <Insets right="20.0" top="20.0" />
                                                                     </HBox.margin>

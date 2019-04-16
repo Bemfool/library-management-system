@@ -122,7 +122,7 @@ public class RegisterUIController implements Initializable {
                 pStmt = Main.conn.prepareStatement("GRANT SELECT ON library.* TO ?@'%'");
                 pStmt.setString(1, newId);
                 pStmt.execute();
-                Main.conn.prepareStatement("GRANT UPDATE ON libray.borrow TO ?@'%'");
+                Main.conn.prepareStatement("GRANT UPDATE ON library.borrow TO ?@'%'");
                 pStmt.setString(1, newId);
                 pStmt.execute();
                 ControllerUtils.showAlert("[成功] 请记住您的账号: " + newId);

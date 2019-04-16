@@ -16,37 +16,18 @@
                     <menus>
                         <Menu mnemonicParsing="false" text="个人">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="New" />
-                                <MenuItem mnemonicParsing="false" text="Open…" />
-                                <Menu mnemonicParsing="false" text="Open Recent" />
-                                <SeparatorMenuItem mnemonicParsing="false" />
-                                <MenuItem mnemonicParsing="false" text="Close" />
-                                <MenuItem mnemonicParsing="false" text="Save" />
-                                <MenuItem mnemonicParsing="false" text="Save As…" />
-                                <MenuItem mnemonicParsing="false" text="Revert" />
-                                <SeparatorMenuItem mnemonicParsing="false" />
-                                <MenuItem mnemonicParsing="false" text="Preferences…" />
-                                <SeparatorMenuItem mnemonicParsing="false" />
-                                <MenuItem mnemonicParsing="false" text="Quit" />
+                                <MenuItem mnemonicParsing="false" onAction="#gotoPersonalInfo" text="个人信息" />
+                                <MenuItem mnemonicParsing="false" onAction="#exit" text="注销" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="图书">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="Undo" />
-                                <MenuItem mnemonicParsing="false" text="Redo" />
-                                <SeparatorMenuItem mnemonicParsing="false" />
-                                <MenuItem mnemonicParsing="false" text="Cut" />
-                                <MenuItem mnemonicParsing="false" text="Copy" />
-                                <MenuItem mnemonicParsing="false" text="Paste" />
-                                <MenuItem mnemonicParsing="false" text="Delete" />
-                                <SeparatorMenuItem mnemonicParsing="false" />
-                                <MenuItem mnemonicParsing="false" text="Select All" />
-                                <MenuItem mnemonicParsing="false" text="Unselect All" />
+                                <MenuItem mnemonicParsing="false" onAction="#gotoBorrowSearch" text="借阅查询" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="帮助">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                                <MenuItem mnemonicParsing="false" onAction="#about" text="关于该软件" />
                             </items>
                         </Menu>
                     </menus>
@@ -93,7 +74,7 @@
                     <children>
                         <TabPane fx:id="tabPane" prefHeight="525.0" prefWidth="900.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <tabs>
-                                <Tab closable="false" text="个人信息">
+                                <Tab fx:id="personalInfoTab" closable="false" text="个人信息">
                                     <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                             <children>
@@ -119,7 +100,7 @@
                                         </AnchorPane>
                                     </content>
                                 </Tab>
-                                <Tab text="借阅查询">
+                                <Tab fx:id="borrowSearchTab" text="借阅查询">
                                     <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                             <children>
@@ -138,12 +119,12 @@
                                                         </TableView>
                                                         <HBox alignment="TOP_RIGHT" prefHeight="57.0" prefWidth="832.0">
                                                             <children>
-                                                                <Button mnemonicParsing="false" text="一键全部续借">
+                                                                <Button mnemonicParsing="false" onAction="#renewAll" text="一键全部续借">
                                                                     <HBox.margin>
                                                                         <Insets right="20.0" top="20.0" />
                                                                     </HBox.margin>
                                                                 </Button>
-                                                                <Button mnemonicParsing="false" text="续借选中书籍">
+                                                                <Button mnemonicParsing="false" onAction="#renewSelected" text="续借选中书籍">
                                                                     <HBox.margin>
                                                                         <Insets right="20.0" top="20.0" />
                                                                     </HBox.margin>

@@ -206,6 +206,7 @@ public class AdminUIController implements Initializable {
             return;
         }
 
+        boolean result = true;
         for (String aBorrowList : borrowList) {
             if (!aBorrowList.isEmpty()) {
                 try {
@@ -213,12 +214,18 @@ public class AdminUIController implements Initializable {
                     pStmt.setString(5, aBorrowList);
                     pStmt.executeUpdate();
                 } catch (SQLException e) {
-                    e.printStackTrace();
-                    System.out.println("ERROR::PSTMT::SET_VALUE");
+//                    e.printStackTrace();
+                    ControllerUtils.showAlert("[错误] " + aBorrowList + "借阅失败!");
+                    System.err.println("ERROR::BORROW::UPDATE::FAILED");
+                    result = false;
                 }
             }
-
         }
+        if(result)
+            ControllerUtils.showAlert("[成功] 完成借书! ");
+        else
+            ControllerUtils.showAlert("[警告] 有部分书籍未完成借阅! ");
+        System.out.println("SUCCESS::BORROW");
     }
 
 

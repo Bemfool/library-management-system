@@ -84,21 +84,28 @@ public class UserUIController  implements Initializable {
         /* 初始化个人界面 */
         Statement stmt;
         ResultSet rset;
-        try {
-            /* 从数据库中读取用户信息 */
-            stmt = Main.conn.createStatement();
-            rset = stmt.executeQuery(
-                    "SELECT user_name, state, reader_type, rent_num, rent_max" +
-                            " FROM user_account WHERE user_id = " + Integer.toString(Main.id));
-            if(rset.next()) {
-                userName = rset.getString("user_name");
-                userState = rset.getInt("state");
-                type = rset.getInt("reader_type");
-                rentNum = rset.getInt("rent_num");
-                rentMax = rset.getInt("rent_max");
+        if(Main.id != 0) {
+            try {
+                /* 从数据库中读取用户信息 */
+                stmt = Main.conn.createStatement();
+                rset = stmt.executeQuery(
+                        "SELECT user_name, state, reader_type, rent_num, rent_max" +
+                                " FROM user_account WHERE user_id = " + Integer.toString(Main.id));
+                if (rset.next()) {
+                    userName = rset.getString("user_name");
+                    userState = rset.getInt("state");
+                    type = rset.getInt("reader_type");
+                    rentNum = rset.getInt("rent_num");
+                    rentMax = rset.getInt("rent_max");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } else {
+            /* 如果是超级管理员模式登陆 */
+            userName = "超级管理员";
+            userState = 1;
+            type = 4;
         }
 
         /* 将用户信息打印到界面上 */
@@ -115,9 +122,13 @@ public class UserUIController  implements Initializable {
             case 1:  typeField.setText("【读者类型】C（100元6册）"); break;
             case 2:  typeField.setText("【读者类型】B（200元12册）"); break;
             case 3:  typeField.setText("【读者类型】A（500元无限制）"); break;
+            case 4:  typeField.setText("【读者类型】超级管理者模式"); break;
             default: typeField.setText("【读者类型】系统出错, 请联系工作人员");
         }
-        rentCountField.setText("【已借/可借】" + rentNum + "/" + rentMax);
+        if(Main.id != 0)
+            rentCountField.setText("【已借/可借】" + rentNum + "/" + rentMax);
+        else
+            rentCountField.setText("【已借/可借】0/Infinity");
 
         /* 初始化借阅查询的表格 */
         choiceCol.setCellValueFactory(new PropertyValueFactory<>("choice"));

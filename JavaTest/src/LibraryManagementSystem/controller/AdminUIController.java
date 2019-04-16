@@ -86,17 +86,23 @@ public class AdminUIController implements Initializable {
         /* 初始化管理员个人界面 */
         Statement stmt;
         ResultSet rset;
-        try {
-            stmt = Main.conn.createStatement();
-            rset = stmt.executeQuery(
-                    "select manager_name, manager_priv" +
-                            " from manager_account where manager_id = " + Integer.toString(Main.id));
-            if(rset.next()) {
-                managerName = rset.getString("manager_name");
-                priv = rset.getString("manager_priv");
+        if(Main.id != 0) {
+            try {
+                stmt = Main.conn.createStatement();
+                rset = stmt.executeQuery(
+                        "select manager_name, manager_priv" +
+                                " from manager_account where manager_id = " + Integer.toString(Main.id));
+                if (rset.next()) {
+                    managerName = rset.getString("manager_name");
+                    priv = rset.getString("manager_priv");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } else {
+            /* 如果是超级管理员模式登陆 */
+            managerName = "超级管理员";
+            priv = "A";
         }
         managerIdField.setText("【工号】" + String.format("%0" + 5 + "d", Main.id));
         managerNameField.setText("【姓名】" + managerName);

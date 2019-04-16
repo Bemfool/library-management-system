@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class ControllerUtils {
-    public static void extractRentBookData(ObservableList<BookInfo> rentBookData, TableView<BookInfo> rentTableField, int id) {
+    static void extractRentBookData(ObservableList<BookInfo> rentBookData, TableView<BookInfo> rentTableField, int id) {
         Statement stmt;
         ResultSet rset;
         try {
@@ -40,25 +40,36 @@ public class ControllerUtils {
         }
     }
 
-    public static void search(ObservableList<BookInfo> searchBookData, TabPane tabPane, Tab searchTab, ChoiceBox<String> searchOption, TextField searchField, TableView<BookInfo> searchTableField) {
+    static void search(ObservableList<BookInfo> searchBookData, TabPane tabPane, Tab searchTab, ChoiceBox<String> searchOption, TextField searchField, TableView<BookInfo> searchTableField) {
         searchBookData.clear();
         tabPane.getSelectionModel().select(searchTab);
         PreparedStatement pStmt;
-        ResultSet rset = null;
+        ResultSet rset;
         try {
-            if (searchOption.getValue().equals("书名"))
-                pStmt = Main.conn.prepareStatement("select * from book where book_name like ?");
-            else if(searchOption.getValue().equals("作者"))
-                pStmt = Main.conn.prepareStatement("select * from book where author like ?");
-            else if(searchOption.getValue().equals("出版社"))
-                pStmt = Main.conn.prepareStatement("select * from book where press like ?");
-            else if(searchOption.getValue().equals("出版日期"))
-                pStmt = Main.conn.prepareStatement("select * from book where pub_date like ?");
-            else {
-                System.out.println("ERROR::CHOICE_BOX");
-                return;
+            switch (searchOption.getValue()) {
+                case "书名":
+                    pStmt = Main.conn.prepareStatement("select * from book where book_name like ?");
+                    break;
+                case "作者":
+                    pStmt = Main.conn.prepareStatement("select * from book where author like ?");
+                    break;
+                case "出版社":
+                    pStmt = Main.conn.prepareStatement("select * from book where press like ?");
+                    break;
+                case "出版日期":
+                    pStmt = Main.conn.prepareStatement("select * from book where pub_date like ?");
+                    break;
+                default:
+                    System.out.println("ERROR::CHOICE_BOX");
+                    return;
             }
-            pStmt.setString(1, "%" + searchField.getText() + "%");
+            String strToSearch = searchField.getText();
+            StringBuilder strVague = new StringBuilder("%");
+            for(int i=0; i<strToSearch.length(); i++) {
+                strVague.append(strToSearch.charAt(i));
+                strVague.append("%");
+            }
+            pStmt.setString(1, String.valueOf(strVague));
             rset = pStmt.executeQuery();
             while(rset.next()) {
                 searchBookData.add(new BookInfo(

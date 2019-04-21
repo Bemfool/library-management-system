@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef6e9395-7927-44c4-8f9e-d17a7f114684" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaTest/LibraryManagementSystem/controller/AdminUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaTest/LibraryManagementSystem/controller/AdminUIController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaTest/LibraryManagementSystem/controller/UserUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaTest/LibraryManagementSystem/controller/UserUIController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LibraryManagementSystem/controller/AdminUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LibraryManagementSystem/controller/AdminUIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LibraryManagementSystem/controller/UserUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LibraryManagementSystem/controller/UserUIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LibraryManagementSystem/controller/ControllerUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LibraryManagementSystem/controller/ControllerUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -106,16 +104,16 @@
         <counts>
           <entry key="dummy" value="1" />
           <entry key="fxml" value="13" />
-          <entry key="java" value="17864" />
+          <entry key="java" value="17986" />
           <entry key="sql" value="6" />
-          <entry key="txt" value="262" />
+          <entry key="txt" value="289" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="17850" />
-          <entry key="PLAIN_TEXT" value="263" />
-          <entry key="SQL" value="20" />
+          <entry key="JAVA" value="17970" />
+          <entry key="PLAIN_TEXT" value="290" />
+          <entry key="SQL" value="22" />
           <entry key="XML" value="13" />
         </counts>
       </usages-collector>
@@ -151,11 +149,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/controller/RegisterUIController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="82" column="51" lean-forward="true" selection-start-line="82" selection-start-column="51" selection-end-line="82" selection-end-column="51" />
+            <state relative-caret-position="369">
+              <caret line="127" column="46" lean-forward="true" selection-start-line="127" selection-start-column="46" selection-end-line="127" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -188,8 +186,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/controller/UserUIController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="190" column="24" selection-start-line="190" selection-start-column="24" selection-end-line="190" selection-end-column="24" />
+            <state relative-caret-position="405">
+              <caret line="273" column="40" lean-forward="true" selection-start-line="273" selection-start-column="40" selection-end-line="273" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -207,13 +205,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/controller/AdminUIController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1068">
-              <caret line="318" column="24" selection-start-line="318" selection-start-column="24" selection-end-line="318" selection-end-column="24" />
+            <state relative-caret-position="2308">
+              <caret line="316" lean-forward="true" selection-start-line="316" selection-end-line="316" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#5991#9988#0" />
               </folding>
             </state>
           </provider>
@@ -234,8 +233,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/controller/ControllerUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+            <state relative-caret-position="-162">
+              <caret line="67" selection-start-line="67" selection-end-line="72" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -262,6 +261,7 @@
       <find>searchTab</find>
       <find>choice</find>
       <find>rentDate</find>
+      <find>UPDATE::</find>
     </findStrings>
     <replaceStrings>
       <replace>TODO</replace>
@@ -311,9 +311,9 @@
         <option value="$PROJECT_DIR$/src/LibraryManagementSystem/Main.java" />
         <option value="$PROJECT_DIR$/src/LibraryManagementSystem/controller/RegisterUIController.java" />
         <option value="$PROJECT_DIR$/src/LibraryManagementSystem/BookInfo.java" />
-        <option value="$PROJECT_DIR$/src/LibraryManagementSystem/controller/ControllerUtils.java" />
-        <option value="$PROJECT_DIR$/src/LibraryManagementSystem/controller/AdminUIController.java" />
         <option value="$PROJECT_DIR$/src/LibraryManagementSystem/controller/UserUIController.java" />
+        <option value="$PROJECT_DIR$/src/LibraryManagementSystem/controller/AdminUIController.java" />
+        <option value="$PROJECT_DIR$/src/LibraryManagementSystem/controller/ControllerUtils.java" />
       </list>
     </option>
   </component>
@@ -547,7 +547,7 @@
       <workItem from="1555413028872" duration="1274000" />
       <workItem from="1555504222448" duration="536000" />
       <workItem from="1555810884676" duration="591000" />
-      <workItem from="1555822302054" duration="4190000" />
+      <workItem from="1555822302054" duration="12667000" />
     </task>
     <task id="LOCAL-00001" summary="little update">
       <created>1554995290378</created>
@@ -682,14 +682,22 @@
       <option name="project" value="LOCAL" />
       <updated>1555385036083</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="修复退出登陆重新登陆账号信息不变的情况。">
+      <created>1555847219254</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1555847219254</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119900000" />
+    <option name="totallyTimeSpent" value="128377000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25606468" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -746,7 +754,8 @@
     <MESSAGE value="增加管理员的注册用户权限判断" />
     <MESSAGE value="完善超级管理员模式界面" />
     <MESSAGE value="完善借阅成功的反馈" />
-    <option name="LAST_COMMIT_MESSAGE" value="完善借阅成功的反馈" />
+    <MESSAGE value="修复退出登陆重新登陆账号信息不变的情况。" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复退出登陆重新登陆账号信息不变的情况。" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/javafx.base/com/sun/javafx/event/CompositeEventHandler.java">
@@ -828,38 +837,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/controller/ControllerUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/fxml/UserUI.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="121" column="80" selection-start-line="121" selection-start-column="80" selection-end-line="121" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/BookInfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="32" column="45" lean-forward="true" selection-start-line="32" selection-start-column="45" selection-end-line="32" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/controller/RegisterUIController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="82" column="51" lean-forward="true" selection-start-line="82" selection-start-column="51" selection-end-line="82" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -894,10 +875,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/fxml/UserUI.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="563">
+          <caret line="121" column="80" selection-start-line="121" selection-start-column="80" selection-end-line="121" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/controller/ControllerUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-162">
+          <caret line="67" selection-start-line="67" selection-end-line="72" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/controller/UserUIController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="190" column="24" selection-start-line="190" selection-start-column="24" selection-end-line="190" selection-end-column="24" />
+        <state relative-caret-position="405">
+          <caret line="273" column="40" lean-forward="true" selection-start-line="273" selection-start-column="40" selection-end-line="273" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -906,8 +905,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/controller/AdminUIController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1068">
-          <caret line="318" column="24" selection-start-line="318" selection-start-column="24" selection-end-line="318" selection-end-column="24" />
+        <state relative-caret-position="2308">
+          <caret line="316" lean-forward="true" selection-start-line="316" selection-end-line="316" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5991#9988#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem/controller/RegisterUIController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="127" column="46" lean-forward="true" selection-start-line="127" selection-start-column="46" selection-end-line="127" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -188,6 +188,7 @@ public class UserUIController  implements Initializable {
 
     public void exit(ActionEvent actionEvent) {
         try {
+            Main.id = 0;
             Main.conn.close();
         } catch (SQLException e) {
             ControllerUtils.showAlert("[错误] 用户注销失败!");

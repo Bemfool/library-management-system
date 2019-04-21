@@ -179,14 +179,14 @@ public class AdminUIController implements Initializable {
                 int rentMax = rset.getInt("rent_max");
                 if(rentNum + borrowList.length > rentMax) {
                     ControllerUtils.showAlert("[错误] 借阅的书籍数目大于能够借阅的数量!");
-                    System.err.println("ERROR::BORROW::NUM");
+                    System.err.println("ERROR::BORROW::NUM::USER");
                     return;
                 }
             }
         } catch (SQLException e) {
 //            e.printStackTrace();
             ControllerUtils.showAlert("[错误] 读取能够借阅的最大书籍数失败!");
-            System.err.println("ERROR::BORROW::SELECT_NUM::FAILED");
+            System.err.println("ERROR::BORROW::SELECT_NUM::USER::FAILED");
             return;
         }
 
@@ -210,6 +210,27 @@ public class AdminUIController implements Initializable {
         for (String aBorrowList : borrowList) {
             if (!aBorrowList.isEmpty()) {
                 try {
+                    /* 判断要借阅的书籍是否有足够的库存 */
+                    try {
+                        pStmt = Main.conn.prepareStatement(
+                                "SELECT book_num FROM book WHERE book_index = ?");
+                        pStmt.setString(1, aBorrowList);
+                        rset = pStmt.executeQuery();
+                        while(rset.next()) {
+                            int bookNum = rset.getInt("book_num");
+                            if(bookNum < 1) {
+                                ControllerUtils.showAlert("[错误] 要借阅的书籍是没有足够的库存!");
+                                System.err.println("ERROR::BORROW::NUM::BOOK");
+                                return;
+                            }
+                        }
+                    } catch (SQLException e) {
+//                      e.printStackTrace();
+                        ControllerUtils.showAlert("[错误] 读取能够书籍库存数量失败!");
+                        System.err.println("ERROR::BORROW::SELECT_NUM::BOOK::FAILED");
+                        return;
+                    }
+
                     pStmt.setString(1, aBorrowList);
                     pStmt.setString(5, aBorrowList);
                     pStmt.executeUpdate();
@@ -295,6 +316,7 @@ public class AdminUIController implements Initializable {
 
     public void exit(ActionEvent actionEvent) {
         try {
+            Main.id = 0;
             Main.conn.close();
         } catch (SQLException e) {
             ControllerUtils.showAlert("[错误] 管理员注销失败!");

@@ -22,7 +22,9 @@ public class ControllerUtils {
         try {
             stmt = Main.conn.createStatement();
             rset = stmt.executeQuery(
-                    "select * from user_account natural join borrow natural join book where user_id = " + Integer.toString(id));
+                    "SELECT * FROM user_account NATURAL JOIN borrow " +
+                            "NATURAL JOIN book " +
+                            "WHERE user_id = " + Integer.toString(id));
             while(rset.next()) {
                 rentBookData.add(new BookInfo(
                         rset.getString("book_name"),
@@ -48,16 +50,16 @@ public class ControllerUtils {
         try {
             switch (searchOption.getValue()) {
                 case "书名":
-                    pStmt = Main.conn.prepareStatement("select * from book where book_name like ?");
+                    pStmt = Main.conn.prepareStatement("SELECT * FROM book WHERE book_name LIKE ?");
                     break;
                 case "作者":
-                    pStmt = Main.conn.prepareStatement("select * from book where author like ?");
+                    pStmt = Main.conn.prepareStatement("SELECT * FROM book WHERE author LIKE ?");
                     break;
                 case "出版社":
-                    pStmt = Main.conn.prepareStatement("select * from book where press like ?");
+                    pStmt = Main.conn.prepareStatement("SELECT * FROM book WHERE press LIKE ?");
                     break;
                 case "出版日期":
-                    pStmt = Main.conn.prepareStatement("select * from book where pub_date like ?");
+                    pStmt = Main.conn.prepareStatement("SELECT * FROM book WHERE pub_date LIKE ?");
                     break;
                 default:
                     System.out.println("ERROR::CHOICE_BOX");

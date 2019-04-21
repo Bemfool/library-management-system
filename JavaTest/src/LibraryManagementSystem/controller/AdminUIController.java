@@ -90,8 +90,8 @@ public class AdminUIController implements Initializable {
             try {
                 stmt = Main.conn.createStatement();
                 rset = stmt.executeQuery(
-                        "select manager_name, manager_priv" +
-                                " from manager_account where manager_id = " + Integer.toString(Main.id));
+                        "SELECT manager_name, manager_priv" +
+                                " FROM manager_account WHERE manager_id = " + Integer.toString(Main.id));
                 if (rset.next()) {
                     managerName = rset.getString("manager_name");
                     priv = rset.getString("manager_priv");
@@ -212,10 +212,11 @@ public class AdminUIController implements Initializable {
                 try {
                     /* 判断要借阅的书籍是否有足够的库存 */
                     try {
-                        pStmt = Main.conn.prepareStatement(
+                        PreparedStatement pStmtTemp;
+                        pStmtTemp = Main.conn.prepareStatement(
                                 "SELECT book_num FROM book WHERE book_index = ?");
-                        pStmt.setString(1, aBorrowList);
-                        rset = pStmt.executeQuery();
+                        pStmtTemp.setString(1, aBorrowList);
+                        rset = pStmtTemp.executeQuery();
                         while(rset.next()) {
                             int bookNum = rset.getInt("book_num");
                             if(bookNum < 1) {

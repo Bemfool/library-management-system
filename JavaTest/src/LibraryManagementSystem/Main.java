@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 
+import static java.lang.System.exit;
+
 public class Main extends Application {
     public static int id;               /* 用户/管理员账号 */
     public static Connection conn;      /* 用于数据库连接  */
@@ -160,8 +162,8 @@ public class Main extends Application {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-            ControllerUtils.showAlert("[错误] 初始化数据库驱动失败!");
             System.out.println("ERROR::CLASS::INIT");
+            exit(0);
         }
         launch(args);
     }
